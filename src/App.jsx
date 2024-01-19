@@ -1,12 +1,13 @@
 import "./App.css";
-import LoginPage from "./components/LoginPage";
+import LogoutButton from "./components/LogoutButton";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
     <>
       <div>
-        <h1>Hello World</h1>
         <LoginPage />
+        <LogoutButton />
       </div>
     </>
   );
