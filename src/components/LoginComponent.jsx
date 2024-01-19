@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { BASE_URL } from "../api/api";
+
 import axios from "axios";
+
 const LoginComponent = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -19,7 +21,6 @@ const LoginComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
     axios.defaults.baseURL = BASE_URL;
     axios.defaults.withCredentials = true;
