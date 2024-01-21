@@ -7,9 +7,9 @@ function App() {
   return (
     <>
       <div>
-        {/* <LoginPage /> */}
+        <LoginPage />
         {/* <LogoutButton /> */}
-        <RegisterComponent />
+        {/* <RegisterComponent /> */}
       </div>
     </>
   );

@@ -1,11 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BASE_URL } from "../api/api";
 import axios from "axios";
-import { login, logout } from "../features/authSlice";
-import { UseDispatch, useSelector } from "react-redux";
+import { login } from "../features/authSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const LoginComponent = () => {
+  axios.defaults.baseURL = BASE_URL;
+  axios.defaults.withCredentials = true;
+  const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.auth.status);
+
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const response = await axios.get("/users/current-user");
+        console.log(response);
+        if (response.data.statusCode === 200) {
+          dispatch(login(response.data));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    checkLoginStatus();
+  if(loginStatus) console.log("already logged in")
+  }, [dispatch, loginStatus]);
+
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -24,16 +45,17 @@ const LoginComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.defaults.baseURL = BASE_URL;
-    axios.defaults.withCredentials = true;
-
     try {
       const response = await axios.post(`/users/login`, formData);
       console.log(response.data);
+      if (response.data.statusCode === 200) {
+        dispatch(login(response.data));
+      }
     } catch (error) {
       console.error("login Failed: ", error.response.data);
     }
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
