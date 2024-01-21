@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { BASE_URL } from "../api/api";
-
 import axios from "axios";
+import { login, logout } from "../features/authSlice";
+import { UseDispatch, useSelector } from "react-redux";
 
 const LoginComponent = () => {
+  const loginStatus = useSelector((state) => state.auth.status);
   const [formData, setFormData] = useState({
     email: "",
     username: "",
