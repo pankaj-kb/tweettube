@@ -1,6 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
-import { BASE_URL } from "../api/api";
+import axios from "../axiosConfig.js"
 
 const RegisterComponent = () => {
 
@@ -41,9 +40,6 @@ const RegisterComponent = () => {
     formDataWithFile.append("username", formData.username);
     formDataWithFile.append("password", formData.password);
     formDataWithFile.append("avatar", selectedFile);
-
-    axios.defaults.baseURL = BASE_URL;
-    axios.defaults.withCredentials = true;
 
     try {
       const response = await axios.post("/users/register", formDataWithFile);

@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import { BASE_URL } from "../api/api";
-import axios from "axios";
+import axios from "../axiosConfig.js"
 import { login } from "../features/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const LoginComponent = () => {
-  axios.defaults.baseURL = BASE_URL;
-  axios.defaults.withCredentials = true;
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.auth.status);
 
