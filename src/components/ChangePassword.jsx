@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "../axiosConfig";
 
 const ChangePassword = () => {
-
   const [formData, setFormData] = useState({
     oldPassword: "",
     newPassword: "",
@@ -20,28 +19,29 @@ const ChangePassword = () => {
   };
 
   const handleConfirmPassword = (e) => {
-    setConfirmPassword(e.target.value)
+    setConfirmPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-      try {
-        if (formData.newPassword === confirmPassword) {
-            const response = axios.post("/users/change-password", formData);
-            console.log(response);
-        } else {
-            console.log("error : Passwords does not match.")
-        }
-      } catch (error) {
-        console.log(error);
+    try {
+      if (formData.newPassword === confirmPassword) {
+        const response = await axios.post("/users/change-password", formData);
+        console.log(response);
+      } else {
+        console.log("error : Passwords does not match.");
       }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label>
+        Current-Password:
           <input
             type="password"
             name="oldPassword"
@@ -50,6 +50,7 @@ const ChangePassword = () => {
           />
         </label>
         <label>
+        Change-Password:
           <input
             type="password"
             name="newPassword"
@@ -58,6 +59,7 @@ const ChangePassword = () => {
           />
         </label>
         <label>
+        Confirm-Password: 
           <input
             type="password"
             name="confirmPassword"

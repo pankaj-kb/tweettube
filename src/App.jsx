@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <div>
-        <LoginPage />
+        {/* <LoginPage /> */}
         {/* <LogoutButton /> */}
         {/* <RegisterComponent /> */}
         <ChangePassword />
