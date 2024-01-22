@@ -59,7 +59,7 @@ const RegisterComponent = () => {
   return (
     <div className="bg-black text-blue-800 h-screen w-screen">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="fullName">
+        <label>
           fullName
           <input
             type="text"
@@ -68,7 +68,7 @@ const RegisterComponent = () => {
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="email">
+        <label>
           email
           <input
             type="email"
@@ -77,7 +77,7 @@ const RegisterComponent = () => {
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="username">
+        <label>
           username
           <input
             type="text"
@@ -86,7 +86,7 @@ const RegisterComponent = () => {
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="password">
+        <label>
           password
           <input
             type="password"
@@ -96,11 +96,10 @@ const RegisterComponent = () => {
           />
         </label>
 
-        <label htmlFor="fileInput">
+        <label>
           Select a file:
           <input
             type="file"
-            id="fileInput"
             accept=".jpg, .jpeg, .png"
             onChange={handleFileChange}
           />
