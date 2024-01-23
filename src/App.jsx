@@ -1,14 +1,14 @@
 import "./App.css";
 import LogoutButton from "./components/LogoutButton";
-import LoginPage from "./pages/LoginPage";
 import RegisterComponent from "./components/RegisterComponent";
 import ChangePassword from "./components/ChangePassword";
+import LoginComponent from "./components/LoginComponent";
 
 function App() {
   return (
     <>
       <div>
-        <LoginPage />
+        <LoginComponent />
         {/* <LogoutButton /> */}
         {/* <RegisterComponent /> */}
         {/* <ChangePassword /> */}

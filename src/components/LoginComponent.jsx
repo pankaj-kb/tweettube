@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "../axiosConfig.js"
+import axios from "../axiosConfig.js";
 import { login } from "../features/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -21,7 +21,7 @@ const LoginComponent = () => {
     };
 
     checkLoginStatus();
-  if(loginStatus) console.log("already logged in")
+    if (loginStatus) console.log("already logged in");
   }, [dispatch, loginStatus]);
 
   const [formData, setFormData] = useState({
@@ -54,40 +54,49 @@ const LoginComponent = () => {
   };
 
   return (
-    <div style={{ fontFamily: 'Clash Display'}}>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">
-          email
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="username">
-          username
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="password">
-          password
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </label>
-        <button className="bg-black text-white" type="submit">
-          Login
-        </button>
-        <h4>forgot password</h4>
-      </form>
+    <div
+      className="font-['clash-display'] bg-[#0D1113] text-[#FBF9F9]
+    lg:flex h-screen"
+    >
+      <div className="flex-1 bg-[#E8317E]"></div>
+      <div className="flex-1 flex h-full justify-center items-center">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col justify-center items-center gap-[20px]"
+        >
+          <label>
+            email
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            username
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            password
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+          </label>
+          <button className="bg-black text-white" type="submit">
+            Login
+          </button>
+          <h4>forgot password</h4>
+        </form>
+      </div>
     </div>
   );
 };
