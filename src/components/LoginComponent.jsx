@@ -54,7 +54,7 @@ const LoginComponent = () => {
   };
 
   return (
-    <div>
+    <div style={{ fontFamily: 'Clash Display'}}>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">
           email

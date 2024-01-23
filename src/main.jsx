@@ -11,16 +11,16 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-const router = createBrowserRouter(
-  createRoutesFromElements (
-  <Route path="/" elements={<Layout />}>
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//   <Route path="/" elements={<App />}>
 
-  </Route>
-  )
-);
+//   </Route>)
+// );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <RouterProvider router={router} />
+    {/* <RouterProvider router={router} /> */}
+    <App />
   </Provider>
 );
