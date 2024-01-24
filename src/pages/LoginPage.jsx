@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "../axiosConfig.js";
 import { login } from "../features/authSlice.js";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import Logo from "../components/Logo.jsx";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.auth.status);
+  const [buttonText, setButtonText] = useState("Login");
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -45,6 +46,8 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setButtonText("trying...");
+
     try {
       const response = await axios.post(`/users/login`, formData);
       console.log(response.data);
@@ -62,8 +65,14 @@ const LoginPage = () => {
                   text-accentwhite lg:flex h-screen 
                   justify-center items-center"
     >
-      <Logo className={"lg:absolute top-[5%] text-[50px] hover:cursor-pointer text-accentpink font-semibold"} 
-      spanClassName={"hover:text-accentwhite border-b-[2px] border-b-accentblack hover:border-accentpink"} />
+      <Logo
+        className={
+          "lg:absolute top-[5%] text-[50px] hover:cursor-pointer text-accentpink font-semibold"
+        }
+        spanClassName={
+          "hover:text-accentwhite border-b-[2px] border-b-accentblack hover:border-accentpink"
+        }
+      />
       <div
         className="lg:flex justify-center items-center border-[10px] border-opacity-55
        border-accentpink h-[70%] w-[50%] rounded-[20px]"
@@ -116,7 +125,7 @@ const LoginPage = () => {
               name="password"
               className="bg-accentpink opacity-90 hover:opacity-100 text-accentwhite mt-[20px] text-center rounded-[10px] h-[40px] w-[50%] text-[20px] hover:text-accentblack focus:border-none"
             >
-              Login
+              {buttonText}
             </Button>
           </form>
         </div>
