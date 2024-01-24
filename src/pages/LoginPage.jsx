@@ -57,48 +57,60 @@ const LoginPage = () => {
 
   return (
     <div
-      className="font-['clash-display'] bg-[#0D1113] text-[#FBF9F9]
-    lg:flex h-screen"
+      className="font-['clash-display'] bg-[#0D1113] 
+                  text-[#FBF9F9] lg:flex h-screen 
+                  justify-center items-center"
     >
-      <div className="flex-1 flex bg-[#E8317E] items-center justify-center">
-        <div className="flex h-[70%] justify-center items-center bg-[#0D1113] rounded-[10px] text-[#E8317E]">
-          <h1 className="text-[80px] font-extrabold w-[40%]">
-            You seek great content
-          </h1>
+      <div className="lg:flex justify-center items-center border-[10px] border-opacity-85
+       border-[#E8317E] h-[70%] w-[50%] rounded-[20px]"
+      >
+        <div className="lg:flex-1">
+          <h1 className="text-[50px] font-extrabold w-[50%] ml-[30%] text-[#E8317E]">You seek great content</h1>
         </div>
-        {/* <img src="/login-img.png" alt="login-img" 
-        className="h w-auto" /> */}
-      </div>
-      <div className="flex-1 flex h-full justify-center items-center">
-        <h1>Kindly Login</h1>
-        <form onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-start gap-[20px]">
-          <Input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="email"
-          />
-          <Input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder="username"
-          />
-          <Input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          <Button className="bg-black text-white"
-          type="submit" name="password">
-            Login
-          </Button>
-          <h4>forgot password</h4>
-        </form>
+        <div className="lg:flex-1 mr-[40px]">
+          <form
+            onSubmit={handleSubmit}
+            className="lg:flex flex-col gap-[20px] items-center"
+          >
+            <Input
+              type="email"
+              name="email"
+              value={formData.email.toLowerCase()}
+              onChange={handleChange}
+              placeholder="email"
+              className="lg:h-[50px] bg-[#20242C] rounded-[10px] border-[2px] border-[#20242c]
+            w-[100%] text-center text-[20px] focus:outline-none 
+            focus:border-[#E8317E] focus:border-[2px] hover:cursor-pointer focus:border-opacity-50"
+            />
+            <Input
+              type="text"
+              name="username"
+              value={formData.username.toLowerCase()}
+              onChange={handleChange}
+              placeholder="username"
+              className="lg:h-[50px] bg-[#20242C] rounded-[10px] border-[2px] border-[#20242c] 
+            w-[100%] text-center text-[20px] focus:outline-none 
+            focus:border-[#E8317E] focus:border-[2px] hover:cursor-pointer focus:border-opacity-50"
+            />
+            <Input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="password"
+              className="lg:h-[50px] bg-[#20242C] rounded-[10px] border-[2px] border-[#20242c] 
+            w-[100%] text-center text-[20px] focus:outline-none 
+            focus:border-[#E8317E] focus:border-[2px] hover:cursor-pointer focus:border-opacity-50"
+            />
+            <Button
+              type="submit"
+              name="password"
+              className="bg-[#E8317E] opacity-90 hover:opacity-100 text-white mt-[20px] text-center rounded-[10px] h-[40px] w-[50%] text-[20px] hover:text-[#0E0F10] focus:border-none"
+            >
+              Login
+            </Button>
+          </form>
+        </div>
       </div>
     </div>
   );
