@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "../axiosConfig.js";
-import { login } from "../features/authSlice";
+import { login } from "../features/authSlice.js";
 import { useSelector, useDispatch } from "react-redux";
+import Input from "../components/Input.jsx";
+import Button from "../components/Button.jsx";
 
-const LoginComponent = () => {
+const LoginPage = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.auth.status);
 
@@ -58,42 +60,43 @@ const LoginComponent = () => {
       className="font-['clash-display'] bg-[#0D1113] text-[#FBF9F9]
     lg:flex h-screen"
     >
-      <div className="flex-1 bg-[#E8317E]"></div>
+      <div className="flex-1 flex bg-[#E8317E] items-center justify-center">
+        <div className="flex h-[70%] justify-center items-center bg-[#0D1113] rounded-[10px] text-[#E8317E]">
+          <h1 className="text-[80px] font-extrabold w-[40%]">
+            You seek great content
+          </h1>
+        </div>
+        {/* <img src="/login-img.png" alt="login-img" 
+        className="h w-auto" /> */}
+      </div>
       <div className="flex-1 flex h-full justify-center items-center">
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col justify-center items-center gap-[20px]"
-        >
-          <label>
-            email
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            username
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            password
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-          </label>
-          <button className="bg-black text-white" type="submit">
+        <h1>Kindly Login</h1>
+        <form onSubmit={handleSubmit}
+        className="flex flex-col justify-center items-start gap-[20px]">
+          <Input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="email"
+          />
+          <Input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            placeholder="username"
+          />
+          <Input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <Button className="bg-black text-white"
+          type="submit" name="password">
             Login
-          </button>
+          </Button>
           <h4>forgot password</h4>
         </form>
       </div>
@@ -101,4 +104,4 @@ const LoginComponent = () => {
   );
 };
 
-export default LoginComponent;
+export default LoginPage;

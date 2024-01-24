@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import axios from "../axiosConfig.js";
 import { useDispatch } from "react-redux";
 import { logout } from "../features/authSlice";
 
-const LogoutButton = () => {
+function LogoutButton({ type, children }) {
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
@@ -18,10 +19,10 @@ const LogoutButton = () => {
   };
 
   return (
-    <button className="bg-black" onClick={handleLogout}>
-      Logout
+    <button className="bg-black" onClick={handleLogout} type={type}>
+      {children}
     </button>
   );
-};
+}
 
 export default LogoutButton;
