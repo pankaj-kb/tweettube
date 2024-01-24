@@ -57,15 +57,18 @@ const LoginPage = () => {
 
   return (
     <div
-      className="font-['clash-display'] bg-[#0D1113] 
-                  text-[#FBF9F9] lg:flex h-screen 
+      className="bg-accentblack 
+                  text-accentwhite lg:flex h-screen 
                   justify-center items-center"
     >
-      <div className="lg:flex justify-center items-center border-[10px] border-opacity-85
-       border-[#E8317E] h-[70%] w-[50%] rounded-[20px]"
+      <div
+        className="lg:flex justify-center items-center border-[10px] border-opacity-85
+       border-accentpink h-[70%] w-[50%] rounded-[20px]"
       >
         <div className="lg:flex-1">
-          <h1 className="text-[50px] font-extrabold w-[50%] ml-[30%] text-[#E8317E]">You seek great content</h1>
+          <h1 className="text-[50px] font-extrabold w-[50%] ml-[30%] text-accentpink">
+            You seek great content
+          </h1>
         </div>
         <div className="lg:flex-1 mr-[40px]">
           <form
@@ -78,9 +81,9 @@ const LoginPage = () => {
               value={formData.email.toLowerCase()}
               onChange={handleChange}
               placeholder="email"
-              className="lg:h-[50px] bg-[#20242C] rounded-[10px] border-[2px] border-[#20242c]
+              className="lg:h-[50px] bg-accentgray rounded-[10px] border-[2px] border-accentgray
             w-[100%] text-center text-[20px] focus:outline-none 
-            focus:border-[#E8317E] focus:border-[2px] hover:cursor-pointer focus:border-opacity-50"
+            focus:border-accentpink focus:border-[2px] hover:cursor-pointer focus:border-opacity-50 hover:border-accentpink"
             />
             <Input
               type="text"
@@ -88,9 +91,9 @@ const LoginPage = () => {
               value={formData.username.toLowerCase()}
               onChange={handleChange}
               placeholder="username"
-              className="lg:h-[50px] bg-[#20242C] rounded-[10px] border-[2px] border-[#20242c] 
+              className="lg:h-[50px] bg-accentgray rounded-[10px] border-[2px] border-accentgray 
             w-[100%] text-center text-[20px] focus:outline-none 
-            focus:border-[#E8317E] focus:border-[2px] hover:cursor-pointer focus:border-opacity-50"
+            focus:border-accentpink focus:border-[2px] hover:cursor-pointer focus:border-opacity-50 hover:border-accentpink"
             />
             <Input
               type="password"
@@ -98,14 +101,14 @@ const LoginPage = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="password"
-              className="lg:h-[50px] bg-[#20242C] rounded-[10px] border-[2px] border-[#20242c] 
+              className="lg:h-[50px] bg-accentgray rounded-[10px] border-[2px] border-accentgray 
             w-[100%] text-center text-[20px] focus:outline-none 
-            focus:border-[#E8317E] focus:border-[2px] hover:cursor-pointer focus:border-opacity-50"
+            focus:border-accentpink focus:border-[2px] hover:cursor-pointer focus:border-opacity-50 hover:border-accentpink"
             />
             <Button
               type="submit"
               name="password"
-              className="bg-[#E8317E] opacity-90 hover:opacity-100 text-white mt-[20px] text-center rounded-[10px] h-[40px] w-[50%] text-[20px] hover:text-[#0E0F10] focus:border-none"
+              className="bg-accentpink opacity-90 hover:opacity-100 text-accentwhite mt-[20px] text-center rounded-[10px] h-[40px] w-[50%] text-[20px] hover:text-accentblack focus:border-none"
             >
               Login
             </Button>

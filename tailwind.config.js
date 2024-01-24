@@ -7,7 +7,15 @@ export default {
     './components/**/*.{html,js}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        accentblack: '#0D1113',
+        accentpink: '#E8317E',
+        accentgray: '#20242c',
+        accentwhite: '#FBF9F9',
+
+      }
+    },
   },
   plugins: [],
 }
