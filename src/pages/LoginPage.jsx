@@ -4,6 +4,7 @@ import { login } from "../features/authSlice.js";
 import { useSelector, useDispatch } from "react-redux";
 import Input from "../components/Input.jsx";
 import Button from "../components/Button.jsx";
+import Logo from "../components/Logo.jsx";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -61,13 +62,18 @@ const LoginPage = () => {
                   text-accentwhite lg:flex h-screen 
                   justify-center items-center"
     >
+      <Logo className={"lg:absolute top-[5%] text-[50px] hover:cursor-pointer text-accentpink font-semibold"} 
+      spanClassName={"hover:text-accentwhite border-b-[2px] border-b-accentblack hover:border-accentpink"} />
       <div
-        className="lg:flex justify-center items-center border-[10px] border-opacity-85
+        className="lg:flex justify-center items-center border-[10px] border-opacity-55
        border-accentpink h-[70%] w-[50%] rounded-[20px]"
       >
         <div className="lg:flex-1">
-          <h1 className="text-[50px] font-extrabold w-[50%] ml-[30%] text-accentpink">
-            You seek great content
+          <h1 className="text-[50px] font-extrabold ml-[30%] text-accentpink whitespace-normal">
+            <span className="block">You</span>
+            <span className="block">seek</span>
+            <span className="block">great</span>
+            <span className="block">content</span>
           </h1>
         </div>
         <div className="lg:flex-1 mr-[40px]">
