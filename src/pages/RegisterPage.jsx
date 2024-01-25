@@ -8,7 +8,7 @@ import {
   inputClasses,
   fileInputClasses,
   disabledButtonClasses,
-} from "../components/classesImporter.js";
+} from "../components/classesImporter.jsx";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +24,8 @@ const RegisterPage = () => {
   // handling files here
   const fileInputRef = useRef(null);
 
-  const handleFileButtonClick = () => {
+  const handleFileButtonClick = (e) => {
+    e.preventDefault();
     fileInputRef.current.click();
   };
 
@@ -45,10 +46,6 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!selectedFile) {
-      console.log("kindly upload avatar.");
-    }
-
     const formDataWithFile = new FormData();
     formDataWithFile.append("fullName", formData.fullName);
     formDataWithFile.append("email", formData.email);
@@ -56,18 +53,21 @@ const RegisterPage = () => {
     formDataWithFile.append("password", formData.password);
     formDataWithFile.append("avatar", selectedFile);
 
-    try {
-      const response = await axios.post("/users/register", formDataWithFile);
-      console.log(response.data);
-      setFormData({
-        fullName: "",
-        email: "",
-        username: "",
-        password: "",
-        avatar: null,
-      });
-    } catch (error) {
-      console.error(error.message);
+    if (selectedFile) {
+      try {
+        const response = await axios.post("/users/register", formDataWithFile);
+        console.log(response.data);
+        setFormData({
+          fullName: "",
+          email: "",
+          username: "",
+          password: "",
+          avatar: null,
+        });
+        setSelectedFile(null)
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   };
 
@@ -114,7 +114,7 @@ const RegisterPage = () => {
               type="email"
               name="email"
               placeholder="email"
-              value={formData.email}
+              value={formData.email.toLowerCase()}
               onChange={handleChange}
               className={inputClasses}
             />
@@ -122,7 +122,7 @@ const RegisterPage = () => {
               type="text"
               name="username"
               placeholder="username"
-              value={formData.username}
+              value={formData.username.toLowerCase()}
               onChange={handleChange}
               className={inputClasses}
             />
@@ -141,11 +141,14 @@ const RegisterPage = () => {
               className="hidden"
               ref={fileInputRef}
             />
-            <Button onClick={handleFileButtonClick} 
-            className={fileInputClasses}
-            > 
-            {selectedFile ? "avatar added" : "Upload Avatar"} 
+
+            <Button
+              onClick={handleFileButtonClick}
+              className={fileInputClasses}
+            >
+              {selectedFile ? "avatar added" : "Upload Avatar"}
             </Button>
+
             <Button
               disabled={!selectedFile}
               type="submit"

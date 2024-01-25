@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Input from "../components/Input.jsx";
 import Button from "../components/Button.jsx";
 import Logo from "../components/Logo.jsx";
-import { inputClasses, buttonClasses } from "../components/classesImporter.js";
+import { inputClasses, buttonClasses } from "../components/classesImporter.jsx";
 
 const LoginPage = () => {
   const dispatch = useDispatch();

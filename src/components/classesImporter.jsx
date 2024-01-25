@@ -6,6 +6,7 @@ const inputClasses = classNames(
   "focus:border-accentpink focus:border-[2px] hover:cursor-pointer",
   "focus:border-opacity-50 hover:border-accentpink"
 );
+
 const buttonClasses = classNames(
   "bg-accentpink font-semibold opacity-90",
   "hover:opacity-100 text-accentwhite mt-[20px]",
@@ -18,7 +19,7 @@ const disabledButtonClasses = classNames(
   "text-accentwhite mt-[20px]",
   "text-center rounded-[10px] h-[40px] w-[50%]",
   "text-[20px] cursor-not-allowed"
-)
+);
 
 const fileInputClasses = classNames(
   "text-[15px]",
