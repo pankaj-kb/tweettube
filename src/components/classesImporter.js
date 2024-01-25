@@ -13,13 +13,20 @@ const buttonClasses = classNames(
   "text-[20px] hover:text-accentblack focus:border-none"
 );
 
+const disabledButtonClasses = classNames(
+  "bg-accentgray font-semibold opacity-50",
+  "text-accentwhite mt-[20px]",
+  "text-center rounded-[10px] h-[40px] w-[50%]",
+  "text-[20px] cursor-not-allowed"
+)
+
 const fileInputClasses = classNames(
   "text-[15px]",
   "bg-accentgray text-accentwhite",
   "hover:bg-accentblack hover:cursor-pointer",
-  "w-[20%] rounded-[10px] font-semibold border-[2px]",
+  "w-[100px] h-[50px] rounded-[10px] font-semibold border-[2px]",
   "border-accentgray hover:border-accentpink",
   "hover:text-accentpink"
 )
 
-export { inputClasses, buttonClasses, fileInputClasses }
+export { inputClasses, buttonClasses, fileInputClasses, disabledButtonClasses }

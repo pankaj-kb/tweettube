@@ -7,6 +7,7 @@ import {
   buttonClasses,
   inputClasses,
   fileInputClasses,
+  disabledButtonClasses,
 } from "../components/classesImporter.js";
 
 const RegisterPage = () => {
@@ -143,12 +144,12 @@ const RegisterPage = () => {
             <Button onClick={handleFileButtonClick} 
             className={fileInputClasses}
             > 
-            {selectedFile ? "uploaded" : "Upload Avatar"} 
+            {selectedFile ? "avatar added" : "Upload Avatar"} 
             </Button>
             <Button
               disabled={!selectedFile}
               type="submit"
-              className={buttonClasses}
+              className={!selectedFile ? disabledButtonClasses : buttonClasses}
             >
               Register
             </Button>
