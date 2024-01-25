@@ -5,12 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import Input from "../components/Input.jsx";
 import Button from "../components/Button.jsx";
 import Logo from "../components/Logo.jsx";
+import { inputClasses, buttonClasses } from "../components/classesImporter.js";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.auth.status);
   const [buttonText, setButtonText] = useState("Login");
-
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
@@ -53,11 +53,11 @@ const LoginPage = () => {
       console.log(response.data);
       if (response.data.statusCode === 200) {
         dispatch(login(response.data));
-        setButtonText("Login")
+        setButtonText("Login");
       }
     } catch (error) {
       console.error("login Failed: ", error.response.data);
-      setButtonText("failed")
+      setButtonText("failed");
     }
   };
 
@@ -98,9 +98,7 @@ const LoginPage = () => {
               value={formData.email.toLowerCase()}
               onChange={handleChange}
               placeholder="email"
-              className="lg:h-[50px] bg-accentgray rounded-[10px] border-[2px] border-accentgray
-            w-[100%] text-center text-[20px] focus:outline-none 
-            focus:border-accentpink focus:border-[2px] hover:cursor-pointer focus:border-opacity-50 hover:border-accentpink"
+              className={inputClasses}
             />
             <Input
               type="text"
@@ -108,9 +106,7 @@ const LoginPage = () => {
               value={formData.username.toLowerCase()}
               onChange={handleChange}
               placeholder="username"
-              className="lg:h-[50px] bg-accentgray rounded-[10px] border-[2px] border-accentgray 
-            w-[100%] text-center text-[20px] focus:outline-none 
-            focus:border-accentpink focus:border-[2px] hover:cursor-pointer focus:border-opacity-50 hover:border-accentpink"
+              className={inputClasses}
             />
             <Input
               type="password"
@@ -118,15 +114,9 @@ const LoginPage = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="password"
-              className="lg:h-[50px] bg-accentgray rounded-[10px] border-[2px] border-accentgray 
-            w-[100%] text-center text-[20px] focus:outline-none 
-            focus:border-accentpink focus:border-[2px] hover:cursor-pointer focus:border-opacity-50 hover:border-accentpink"
+              className={inputClasses}
             />
-            <Button
-              type="submit"
-              name="password"
-              className="bg-accentpink font-semibold opacity-90 hover:opacity-100 text-accentwhite mt-[20px] text-center rounded-[10px] h-[40px] w-[50%] text-[20px] hover:text-accentblack focus:border-none"
-            >
+            <Button type="submit" name="password" className={buttonClasses}>
               {buttonText}
             </Button>
           </form>

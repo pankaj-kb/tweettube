@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from "../axiosConfig.js";
 import Button from "../components/Button.jsx";
 import Input from "../components/Input.jsx";
+import Logo from "../components/Logo.jsx";
+import {
+  buttonClasses,
+  inputClasses,
+  fileInputClasses,
+} from "../components/classesImporter.js";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +20,18 @@ const RegisterPage = () => {
 
   const [selectedFile, setSelectedFile] = useState(null);
 
+  // handling files here
+  const fileInputRef = useRef(null);
+
+  const handleFileButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -21,11 +39,6 @@ const RegisterPage = () => {
       ...prevState,
       [name]: value,
     }));
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedFile(file);
   };
 
   const handleSubmit = async (e) => {
@@ -58,42 +71,90 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="bg-black text-blue-800 h-screen w-screen">
-      <form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          name="fullName"
-          value={formData.fullName}
-          onChange={handleChange}
-        />
-        <Input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <Input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
-        <Input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-
-        <Input
-          type="file"
-          accept=".jpg, .jpeg, .png"
-          onChange={handleFileChange}
-        />
-        <Button disabled={!selectedFile} type="submit">
-          Register
-        </Button>
-      </form>
+    <div
+      className="bg-accentblack 
+    text-accentwhite lg:flex h-screen 
+    justify-center items-center"
+    >
+      <Logo
+        className={
+          "lg:absolute top-[5%] text-[50px] hover:cursor-pointer text-accentpink font-semibold"
+        }
+        spanClassName={
+          "hover:text-accentwhite border-b-[2px] border-b-accentblack hover:border-accentpink"
+        }
+      />
+      <div
+        className="lg:flex justify-center items-center border-[5px] border-opacity-55
+       border-accentpink h-[70%] w-[50%] rounded-[20px]"
+      >
+        <div className="lg:flex-1">
+          <h1 className="text-[50px] font-extrabold ml-[20%] text-accentpink whitespace-normal">
+            <span className="block">Your</span>
+            <span className="block">adventure</span>
+            <span className="block">begins</span>
+            <span className="block">here</span>
+          </h1>
+        </div>
+        <div className="lg:flex-1">
+          <form
+            onSubmit={handleSubmit}
+            className="lg:flex flex-col mr-[30px] gap-[20px] items-center mt-[15px]"
+          >
+            <Input
+              type="text"
+              name="fullName"
+              placeholder="full name"
+              value={formData.fullName}
+              onChange={handleChange}
+              className={inputClasses}
+            />
+            <Input
+              type="email"
+              name="email"
+              placeholder="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={inputClasses}
+            />
+            <Input
+              type="text"
+              name="username"
+              placeholder="username"
+              value={formData.username}
+              onChange={handleChange}
+              className={inputClasses}
+            />
+            <Input
+              type="password"
+              name="password"
+              placeholder="password"
+              value={formData.password}
+              onChange={handleChange}
+              className={inputClasses}
+            />
+            <input
+              type="file"
+              accept=".jpg, .jpeg, .png"
+              onChange={handleFileChange}
+              className="hidden"
+              ref={fileInputRef}
+            />
+            <Button onClick={handleFileButtonClick} 
+            className={fileInputClasses}
+            > 
+            {selectedFile ? "uploaded" : "Upload Avatar"} 
+            </Button>
+            <Button
+              disabled={!selectedFile}
+              type="submit"
+              className={buttonClasses}
+            >
+              Register
+            </Button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
