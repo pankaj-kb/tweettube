@@ -53,9 +53,11 @@ const LoginPage = () => {
       console.log(response.data);
       if (response.data.statusCode === 200) {
         dispatch(login(response.data));
+        setButtonText("Login")
       }
     } catch (error) {
       console.error("login Failed: ", error.response.data);
+      setButtonText("failed")
     }
   };
 
@@ -74,7 +76,7 @@ const LoginPage = () => {
         }
       />
       <div
-        className="lg:flex justify-center items-center border-[10px] border-opacity-55
+        className="lg:flex justify-center items-center border-[5px] border-opacity-55
        border-accentpink h-[70%] w-[50%] rounded-[20px]"
       >
         <div className="lg:flex-1">
@@ -123,7 +125,7 @@ const LoginPage = () => {
             <Button
               type="submit"
               name="password"
-              className="bg-accentpink opacity-90 hover:opacity-100 text-accentwhite mt-[20px] text-center rounded-[10px] h-[40px] w-[50%] text-[20px] hover:text-accentblack focus:border-none"
+              className="bg-accentpink font-semibold opacity-90 hover:opacity-100 text-accentwhite mt-[20px] text-center rounded-[10px] h-[40px] w-[50%] text-[20px] hover:text-accentblack focus:border-none"
             >
               {buttonText}
             </Button>
