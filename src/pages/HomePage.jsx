@@ -17,7 +17,9 @@ function HomePage() {
           />
         </div>
         <div className="flex flex-wrap p-8">
-          <VideoCard />
+        {
+            <VideoCard />
+        }
         </div>
       </div>
     </div>
