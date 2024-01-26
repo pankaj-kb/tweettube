@@ -1,5 +1,6 @@
 import "./App.css";
 import SideBar from "./components/SideBar";
+import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
@@ -9,7 +10,8 @@ function App() {
       <div>
         {/* <LoginPage /> */}
         {/* <RegisterPage /> */}
-        <SideBar/>
+        {/* <SideBar/> */}
+        <HomePage />
       </div>
     </>
   );
