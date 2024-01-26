@@ -22,7 +22,7 @@ const disabledButtonClasses = classNames(
 );
 
 const fileInputClasses = classNames(
-  "text-[15px]",
+  "lg:text-[15px]",
   "bg-accentgray text-accentwhite",
   "hover:bg-accentblack hover:cursor-pointer",
   "w-[100px] h-[50px] rounded-[10px] font-semibold border-[2px]",
@@ -30,4 +30,8 @@ const fileInputClasses = classNames(
   "hover:text-accentpink"
 )
 
-export { inputClasses, buttonClasses, fileInputClasses, disabledButtonClasses }
+const sideBarLoogosClasses = classNames(
+  "lg:text-[30px] hover:text-accentpink cursor-pointer focus:text-accentpink"
+)
+
+export { inputClasses, buttonClasses, fileInputClasses, disabledButtonClasses, sideBarLoogosClasses }
