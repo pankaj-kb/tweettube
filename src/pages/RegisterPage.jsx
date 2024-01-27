@@ -3,6 +3,7 @@ import axios from "../axiosConfig.js";
 import Button from "../components/Button.jsx";
 import Input from "../components/Input.jsx";
 import Logo from "../components/Logo.jsx";
+import { Navigate, useNavigate } from "react-router-dom";
 import {
   buttonClasses,
   inputClasses,
@@ -64,12 +65,13 @@ const RegisterPage = () => {
           password: "",
           avatar: null,
         });
-        setSelectedFile(null)
+        setSelectedFile(null);
       } catch (error) {
         console.error(error.message);
       }
     }
   };
+  const navigate = useNavigate();
 
   return (
     <div
@@ -157,6 +159,17 @@ const RegisterPage = () => {
               Register
             </Button>
           </form>
+          <div className="flex gap-[20px] mt-[20px] justify-center">
+            <h6 className="font-medium text-[15px] hover:cursor-pointer text-accentwhite hover:text-accentpink">
+              forgot password ?
+            </h6>
+            <h6
+              onClick={() => navigate("/login")}
+              className="font-medium text-[15px] hover:cursor-pointer text-accentwhite hover:text-accentpink"
+            >
+              already a user ?
+            </h6>
+          </div>
         </div>
       </div>
     </div>

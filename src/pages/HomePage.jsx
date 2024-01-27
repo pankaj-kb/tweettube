@@ -3,20 +3,35 @@ import SearchBar from "../components/SearchBar";
 import VideoCard from "../components/VideoCard";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function HomePage() {
   const loginStatus = useSelector((state) => state.auth.status);
-  console.log(loginStatus);
+  // console.log(loginStatus);
   const userData = useSelector((state) => state.auth.userData);
-  console.log(userData);
+  // console.log(userData);
   const navigate = useNavigate();
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     if (!loginStatus) {
       navigate("/login");
     }
-  }, [loginStatus, userData]);
+
+    const getAllVideos = async () => {
+      const searchVideos = await axios.get(
+        "/video/?page=1&limit=10&sortBy=desccreatedAt&sortType=desc"
+      );
+      const fetchVideos = searchVideos.data.data.videos;
+      console.log(fetchVideos)
+      console.log(typeof fetchVideos)
+      setVideos(fetchVideos);
+      console.log(videos)
+    };
+
+    getAllVideos();
+  }, [loginStatus, userData, navigate]);
 
   return (
     <div className="flex bg-accentblack min-h-screen">
@@ -31,7 +46,11 @@ function HomePage() {
             buttonClassName="bg-accentpink h-[50px] rounded-[25px] text-center w-[100px] font-medium hover:text-accentblack text-[20px] focus:outline-none ml-[-35px]"
           />
         </div>
-        <div className="flex flex-wrap p-8">{<VideoCard />}</div>
+        <div className="flex flex-wrap p-8 gap-8">
+          {videos.map((video) => (
+            <VideoCard key={video._id} video={video} />
+          ))}
+        </div>
       </div>
     </div>
   );
