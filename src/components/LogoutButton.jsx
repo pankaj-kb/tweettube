@@ -1,27 +1,36 @@
 /* eslint-disable react/prop-types */
 import axios from "../axiosConfig.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/authSlice";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-function LogoutButton({ type, children }) {
+function LogoutButton({ type, children, className }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const loginStatus = useSelector((state) => state.auth.status);
 
-  const handleLogout = async () => {
+  useEffect(() => {
+    console.log("from logout button: ", loginStatus);
+  }, [loginStatus]);
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post(`/users/logout`, {});
-      console.log(response.data);
-      if (response.statusCode === 200) {
-        dispatch(logout);
+      if (response.data.statusCode === 200) {
+        dispatch(logout());
+        navigate("/login");
       }
+      // console.log(response);
     } catch (error) {
       console.error(error.message);
     }
   };
-
   return (
-    <button className="bg-black" onClick={handleLogout} type={type}>
+    <div className={className} onClick={handleLogout} type={type}>
       {children}
-    </button>
+    </div>
   );
 }
 

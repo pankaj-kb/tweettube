@@ -6,11 +6,13 @@ import Input from "../components/Input.jsx";
 import Button from "../components/Button.jsx";
 import Logo from "../components/Logo.jsx";
 import { inputClasses, buttonClasses } from "../components/classesImporter.jsx";
+import { useNavigate, redirect } from "react-router-dom";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.auth.status);
   const [buttonText, setButtonText] = useState("Login");
+  const navigate = useNavigate();
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
@@ -18,6 +20,8 @@ const LoginPage = () => {
         console.log(response);
         if (response.data.statusCode === 200) {
           dispatch(login(response.data));
+        } else {
+          dispatch(login(null));
         }
       } catch (error) {
         console.log(error);
@@ -25,8 +29,11 @@ const LoginPage = () => {
     };
 
     checkLoginStatus();
-    if (loginStatus) console.log("already logged in");
-  }, [dispatch, loginStatus]);
+    if (loginStatus) {
+      console.log("Already Logged in.");
+      navigate("/");
+    }
+  }, [dispatch, loginStatus, navigate]);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -53,7 +60,7 @@ const LoginPage = () => {
       console.log(response.data);
       if (response.data.statusCode === 200) {
         dispatch(login(response.data));
-        setButtonText("Login");
+        navigate("/");
       }
     } catch (error) {
       console.error("login Failed: ", error.response.data);
@@ -119,6 +126,10 @@ const LoginPage = () => {
             <Button type="submit" name="password" className={buttonClasses}>
               {buttonText}
             </Button>
+            <div className="flex gap-[20px]">
+              <h6 className="font-medium text-[15px] hover:cursor-pointer text-accentwhite hover:text-accentpink">forgot password ?</h6>
+              <h6 onClick={()=> navigate("/register")} className="font-medium text-[15px] hover:cursor-pointer text-accentwhite hover:text-accentpink">new user ? register</h6>
+            </div>
           </form>
         </div>
       </div>

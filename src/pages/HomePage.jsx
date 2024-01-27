@@ -1,8 +1,23 @@
 import SideBar from "../components/SideBar";
 import SearchBar from "../components/SearchBar";
 import VideoCard from "../components/VideoCard";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function HomePage() {
+  const loginStatus = useSelector((state) => state.auth.status);
+  console.log(loginStatus);
+  const userData = useSelector((state) => state.auth.userData);
+  console.log(userData);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loginStatus) {
+      navigate("/login");
+    }
+  }, [loginStatus, userData]);
+
   return (
     <div className="flex bg-accentblack min-h-screen">
       <SideBar />
@@ -16,11 +31,7 @@ function HomePage() {
             buttonClassName="bg-accentpink h-[50px] rounded-[25px] text-center w-[100px] font-medium hover:text-accentblack text-[20px] focus:outline-none ml-[-35px]"
           />
         </div>
-        <div className="flex flex-wrap p-8">
-        {
-            <VideoCard />
-        }
-        </div>
+        <div className="flex flex-wrap p-8">{<VideoCard />}</div>
       </div>
     </div>
   );

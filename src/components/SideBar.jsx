@@ -4,6 +4,8 @@ import { TfiCommentsSmiley } from "react-icons/tfi";
 import { FaClockRotateLeft } from "react-icons/fa6";
 import { FaCircleInfo } from "react-icons/fa6";
 import { sideBarLoogosClasses } from "./classesImporter";
+import { BiSolidExit } from "react-icons/bi";
+import LogoutButton from "./LogoutButton";
 // import Logo from "./Logo";
 
 function SideBar() {
@@ -27,6 +29,9 @@ function SideBar() {
       <div className="lg:flex items-center h-[15%] text-accentwhite">
         <FaCircleInfo className={sideBarLoogosClasses} />
       </div>
+      <LogoutButton className="lg:flex items-center h-[15%] text-accentwhite" type="submit">
+        <BiSolidExit className={sideBarLoogosClasses} />
+      </LogoutButton>
     </div>
   );
 }
