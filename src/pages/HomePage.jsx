@@ -2,36 +2,36 @@ import SideBar from "../components/SideBar";
 import SearchBar from "../components/SearchBar";
 import VideoCard from "../components/VideoCard";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 function HomePage() {
   const loginStatus = useSelector((state) => state.auth.status);
-  // console.log(loginStatus);
-  const userData = useSelector((state) => state.auth.userData);
+  console.log(loginStatus);
+  // const userData = useSelector((state) => state.auth.userData);
   // console.log(userData);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    if (!loginStatus) {
-      navigate("/login");
-    }
+    // if (!loginStatus) {
+    //   navigate("/login");
+    // }
 
     const getAllVideos = async () => {
       const searchVideos = await axios.get(
         "/video/?page=1&limit=10&sortBy=desccreatedAt&sortType=desc"
       );
       const fetchVideos = searchVideos.data.data.videos;
-      console.log(fetchVideos)
-      console.log(typeof fetchVideos)
+      // console.log(fetchVideos)
+      // console.log(typeof fetchVideos)
       setVideos(fetchVideos);
-      console.log(videos)
+      // console.log(videos)
     };
 
     getAllVideos();
-  }, [loginStatus, userData, navigate]);
+  }, []);
 
   return (
     <div className="flex bg-accentblack min-h-screen">

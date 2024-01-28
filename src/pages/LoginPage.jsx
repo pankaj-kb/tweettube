@@ -6,7 +6,7 @@ import Input from "../components/Input.jsx";
 import Button from "../components/Button.jsx";
 import Logo from "../components/Logo.jsx";
 import { inputClasses, buttonClasses } from "../components/classesImporter.jsx";
-import { useNavigate, redirect } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -127,8 +127,14 @@ const LoginPage = () => {
               {buttonText}
             </Button>
             <div className="flex gap-[20px]">
-              <h6 className="font-medium text-[15px] hover:cursor-pointer text-accentwhite hover:text-accentpink">forgot password ?</h6>
-              <h6 onClick={()=> navigate("/register")} className="font-medium text-[15px] hover:cursor-pointer text-accentwhite hover:text-accentpink">new user ? register</h6>
+              <h6 className="font-medium text-[15px] hover:cursor-pointer text-accentwhite hover:text-accentpink">
+                forgot password ?
+              </h6>
+              <NavLink to="/register">
+                <h6 className="font-medium text-[15px] hover:cursor-pointer text-accentwhite hover:text-accentpink">
+                  new user ? register
+                </h6>
+              </NavLink>
             </div>
           </form>
         </div>

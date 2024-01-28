@@ -6,6 +6,7 @@ import store from "./store/store.js";
 import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
+import AuthCheck from "./AuthCheck.jsx";
 
 import {
   createBrowserRouter,
@@ -17,8 +18,22 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
-      <Route path="" element={<HomePage />} />
-      <Route path="home" element={<HomePage />} />
+      <Route
+        path=""
+        element={
+          <AuthCheck>
+            <HomePage />
+          </AuthCheck>
+        }
+      />
+      <Route
+        path="home"
+        element={
+          <AuthCheck>
+            <HomePage />
+          </AuthCheck>
+        }
+      />
       <Route path="login" element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
     </Route>
