@@ -43,10 +43,10 @@ function HomePage() {
             buttonText="Search"
             divClassName="lg:flex items-center justify-center text-accentwhite"
             inputClassName="bg-accentgray h-[50px] rounded-[25px] w-[400px] text-center font-medium focus:outline-none text-[20px]"
-            buttonClassName="bg-accentpink h-[50px] rounded-[25px] text-center w-[100px] font-medium hover:text-accentblack text-[20px] focus:outline-none ml-[-35px]"
+            buttonClassName="bg-accentpink h-[50px] rounded-[25px] text-center w-[100px] font-medium hover:text-accentblack text-[20px] focus:outline-accentpink ml-[-35px]"
           />
         </div>
-        <div className="flex flex-wrap p-8 gap-8">
+        <div className="flex flex-wrap p-8 gap-12 items-center justify-center">
           {videos.map((video) => (
             <VideoCard key={video._id} video={video} />
           ))}

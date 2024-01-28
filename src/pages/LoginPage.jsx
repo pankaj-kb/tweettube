@@ -31,7 +31,7 @@ const LoginPage = () => {
     checkLoginStatus();
     if (loginStatus) {
       console.log("Already Logged in.");
-      navigate("/");
+      navigate("/home");
     }
   }, [dispatch, loginStatus, navigate]);
 

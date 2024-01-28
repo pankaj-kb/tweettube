@@ -1,31 +1,32 @@
 /* eslint-disable react/prop-types */
-function VideoCard({ video, onClick }) {
+function VideoCard({ video }) {
   const videoSeconds = video.time;
   const minutes = Math.floor(videoSeconds / 60);
   const remSeconds = videoSeconds % 60;
-  const videoTime = `0${minutes}:${remSeconds < 10 ? '0': ''}${Math.floor(remSeconds)}`
-  console.log(videoTime);
+  const videoTime = `${minutes < 10 ? "0" : ""}${minutes}:${
+    remSeconds < 10 ? "0" : ""
+  }${Math.floor(remSeconds)}`;
 
   return (
     <div
-      className="bg-accentg overflow-hidden flex flex-col w-[18%]
+      className="bg-accentg overflow-hidden flex flex-col w-[300px] h-full
      bg-accentblack text-accentwhite transition-transform 
-     transform-gpu hover:scale-105 cursor-pointer"
+     transform-gpu hover:scale-105 cursor-pointer rounded-xl"
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col object-contain">
         <img
           src={video?.thumbnail}
           alt="video thumbnail"
-          className="rounded-[5%] w-full object-cover"
+          className="object-contain w-full h-[150px]"
         />
         <span
-          className="bg-accentgray font-medium h-[100%] 
+          className="bg-accentgray font-medium h-[20px] w-[15%] 
         text-center rounded-md text-[12px] mt-[-30px] ml-auto"
         >
           {videoTime}
         </span>
       </div>
-      <div className="bg-accentgray rounded-md flex flex-col mt-[1%] p-2">
+      <div className="bg-accentgray flex flex-col pt-[2%] p-2">
         <h1 className="text-center font-medium text-[18px]">{video.title}</h1>
         <div className="flex justify-start items-center gap-2.5">
           <img

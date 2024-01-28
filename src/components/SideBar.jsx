@@ -7,6 +7,7 @@ import { sideBarLoogosClasses } from "./classesImporter";
 import { BiSolidExit } from "react-icons/bi";
 import LogoutButton from "./LogoutButton";
 import ToolTip from "./ToolTip";
+import { NavLink } from "react-router-dom";
 // import Logo from "./Logo";
 
 function SideBar() {
@@ -15,7 +16,11 @@ function SideBar() {
 
       <div className="lg:h-[10%] flex items-center">
       <ToolTip text="Home">
-        <h1 className="lg:text-[20px] text-accentpink font-bold cursor-pointer">Jaggary</h1>
+      <NavLink to="/">
+        <h1 className="lg:text-[20px] text-accentpink font-bold cursor-pointer">
+        Jaggary
+        </h1>
+      </NavLink>
       </ToolTip>
       </div>
     
