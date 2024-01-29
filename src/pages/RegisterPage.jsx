@@ -17,8 +17,7 @@ import { useNavigate } from "react-router-dom";
 const RegisterPage = () => {
   const loginStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
