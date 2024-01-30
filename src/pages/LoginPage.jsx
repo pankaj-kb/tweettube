@@ -17,7 +17,6 @@ const LoginPage = () => {
     const checkLoginStatus = async () => {
       try {
         const response = await axios.get("/users/current-user");
-        console.log(response);
         if (response.data.statusCode === 200) {
           dispatch(login(response.data));
         } else {
@@ -30,8 +29,7 @@ const LoginPage = () => {
 
     checkLoginStatus();
     if (loginStatus) {
-      console.log("Already Logged in.");
-      navigate("/home");
+      navigate("/");
     }
   }, [dispatch, loginStatus, navigate]);
 

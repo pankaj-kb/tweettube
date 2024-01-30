@@ -7,10 +7,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function HomePage() {
-  const loginStatus = useSelector((state) => state.auth.status);
-  console.log(loginStatus);
-  // const userData = useSelector((state) => state.auth.userData);
-  // console.log(userData);
+  // const loginStatus = useSelector((state) => state.auth.status);
+  // console.log(loginStatus);
+  
   // const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
 

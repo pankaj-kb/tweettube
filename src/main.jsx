@@ -14,6 +14,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import SubscriptionsPage from "./pages/SubscriptionsPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,16 +27,16 @@ const router = createBrowserRouter(
           </AuthCheck>
         }
       />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegisterPage />} />
       <Route
-        path="home"
+        path="subscriptions"
         element={
           <AuthCheck>
-            <HomePage />
+            <SubscriptionsPage />
           </AuthCheck>
         }
       />
-      <Route path="login" element={<LoginPage />} />
-      <Route path="register" element={<RegisterPage />} />
     </Route>
   )
 );

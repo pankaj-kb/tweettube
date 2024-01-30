@@ -8,11 +8,6 @@ import { useEffect } from "react";
 function LogoutButton({ type, children, className }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const loginStatus = useSelector((state) => state.auth.status);
-
-  useEffect(() => {
-    console.log("from logout button: ", loginStatus);
-  }, [loginStatus]);
 
   const handleLogout = async (e) => {
     e.preventDefault();
