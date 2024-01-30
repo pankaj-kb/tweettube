@@ -2,21 +2,21 @@
 function ChannelCard({ channel, onClick, clickToggle }) {
   return (
     <div
-      className="overflow-hidden flex flex-col w-[275px] h-[275px] bg-accentblack 
-    text-accentwhite transition-transform transform-gpu cursor-pointer gap-[20px]"
+      className="overflow-hidden flex flex-col w-[30%] h-auto bg-accentblack
+    text-accentwhite transition-transform transform-gpu cursor-pointer gap-[20px] items-center"
     >
       <img
         src={channel.avatar}
         alt="channel avatar"
-        className="object-cover rounded-full h-[90%] w-[90%]"
+        className="object-cover rounded-full w-[40%]"
       />
-      <div className="flex flex-col gap-[20px] items-center">
+      <div className="flex flex-col gap-[10px] items-center">
         <h1 className="text-center font-semibold text-[18px]">
           {channel.username}
         </h1>
         <button
           onClick={onClick}
-          className={`text-accentwhite font-semibold rounded-lg w-[50%] h-[40px] ${
+          className={`text-accentwhite text-center font-semibold rounded-lg w-[150%] h-auto ${
             clickToggle ? "bg-accentpink" : "bg-accentgray"
           } `}
         >
