@@ -1,23 +1,27 @@
 /* eslint-disable react/prop-types */
-function ChannelCard({ channel }) {
+function ChannelCard({ channel, onClick, clickToggle }) {
   return (
     <div
-      className="overflow-hidden flex flex-col w-[300px] h-full
-       bg-accentblack text-accentwhite transition-transform 
-       transform-gpu hover:scale-105 cursor-pointer"
+      className="overflow-hidden flex flex-col w-[275px] h-[275px] bg-accentblack 
+    text-accentwhite transition-transform transform-gpu cursor-pointer gap-[20px]"
     >
-     <div className="aspect-w-1 aspect-h-1">
-        <img
-          src={channel.avatar}
-          alt="channel avatar"
-          className="object-cover rounded-full"
-        />
-    </div>
-      <div className="bg-accentgray flex flex-col pt-[2%] p-2">
-        <h1 className="text-center font-medium text-[18px]">
+      <img
+        src={channel.avatar}
+        alt="channel avatar"
+        className="object-cover rounded-full h-[90%] w-[90%]"
+      />
+      <div className="flex flex-col gap-[20px] items-center">
+        <h1 className="text-center font-semibold text-[18px]">
           {channel.username}
         </h1>
-        <button>Unsubscribe</button>
+        <button
+          onClick={onClick}
+          className={`text-accentwhite font-semibold rounded-lg w-[50%] h-[40px] ${
+            clickToggle ? "bg-accentpink" : "bg-accentgray"
+          } `}
+        >
+          {!clickToggle ? "Unsubscribe" : "Subscribe"}
+        </button>
       </div>
     </div>
   );

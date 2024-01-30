@@ -10,28 +10,51 @@ function SubscriptionsPage() {
 
   const userData = useSelector((state) => state.auth.userData);
 
-  const channelId = userData.data._id;
+  const subscriberId = userData.data._id;
 
   //   console.log(channelId);
 
   useEffect(() => {
     const getChannels = async () => {
-      const response = await axios.get(`/subscription/c/${channelId}`);
-
-      const mapChannels = response.data.data.flatMap(
-        (channel) => channel.subscriptionList
-      );
-
-      console.log(mapChannels)
-      setChannels(mapChannels);
-      console.log(channels);
-
-      if (channels === "") {
-        console.log("Channels are empty");
+      try {
+        const response = await axios.get(`/subscription/c/${subscriberId}`);
+        console.log(response);
+  
+        const mapChannels = response.data.data.flatMap(
+          (channel) => channel.subscriptionList
+        );
+  
+        setChannels((prevChannels) =>
+          mapChannels.map((channel) => ({ ...channel, clickToggle: false }))
+        );
+  
+        if (mapChannels.length === 0) {
+          console.log("Channels are empty");
+        }
+      } catch (error) {
+        console.error("Error fetching channels", error);
       }
     };
     getChannels();
-  }, [channelId]);
+  }, [subscriberId]);
+  
+
+  const handleOnClick = async (clickedChannelId) => {
+    try {
+      const toggleSub = await axios.post(`/subscription/c/${clickedChannelId}`);
+      console.log(toggleSub);
+
+      setChannels((prevChannels) =>
+        prevChannels.map((channel) =>
+          channel._id === clickedChannelId
+            ? { ...channel, clickToggle: !channel.clickToggle }
+            : channel
+        )
+      );
+    } catch (error) {
+      console.error("Something went wrong.", error);
+    }
+  };
 
   return (
     <div className="flex bg-accentblack min-h-screen">
@@ -46,9 +69,14 @@ function SubscriptionsPage() {
             buttonClassName="bg-accentpink h-[50px] rounded-[25px] text-center w-[100px] font-medium hover:text-accentblack text-[20px] focus:outline-accentpink ml-[-35px]"
           />
         </div>
-        <div className="flex flex-wrap p-8 gap-12 items-center justify-center">
+        <div className="flex flex-wrap p-8 gap-12 items-center justify-start">
           {channels.map((channel) => (
-            <ChannelCard key={channel._id} channel={channel} />
+            <ChannelCard
+              key={channel._id}
+              channel={channel}
+              onClick={() => handleOnClick(channel._id)}
+              clickToggle={channel.clickToggle}
+            />
           ))}
         </div>
       </div>
