@@ -7,7 +7,10 @@ import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import AuthCheck from "./AuthCheck.jsx";
-
+import TweetsPage from "./pages/TweetsPage.jsx";
+import DevInfoPage from "./pages/DevInfoPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
+import WatchHistoryPage from "./pages/WatchHistoryPage.jsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -34,6 +37,38 @@ const router = createBrowserRouter(
         element={
           <AuthCheck>
             <SubscriptionsPage />
+          </AuthCheck>
+        }
+      />
+      <Route
+        path="profile"
+        element={
+          <AuthCheck>
+            <ProfilePage />
+          </AuthCheck>
+        }
+      />
+      <Route
+        path="tweets"
+        element={
+          <AuthCheck>
+            <TweetsPage />
+          </AuthCheck>
+        }
+      />
+      <Route
+        path="watch-history"
+        element={
+          <AuthCheck>
+            <WatchHistoryPage />
+          </AuthCheck>
+        }
+      />
+      <Route
+        path="dev-info"
+        element={
+          <AuthCheck>
+            <DevInfoPage />
           </AuthCheck>
         }
       />
