@@ -16,10 +16,10 @@ function HomePage() {
     // }
 
     const getAllVideos = async () => {
-      const searchVideos = await axios.get(
+      const response = await axios.get(
         "/video/?page=1&limit=10&sortBy=desccreatedAt&sortType=desc"
       );
-      const fetchVideos = searchVideos.data.data.videos;
+      const fetchVideos = response.data.data.videos;
       // console.log(fetchVideos)
       // console.log(typeof fetchVideos)
       setVideos(fetchVideos);
