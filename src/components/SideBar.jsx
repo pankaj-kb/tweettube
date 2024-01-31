@@ -8,7 +8,6 @@ import { BiSolidExit } from "react-icons/bi";
 import LogoutButton from "./LogoutButton";
 import ToolTip from "./ToolTip";
 import { NavLink } from "react-router-dom";
-// import Logo from "./Logo";
 
 function SideBar() {
   return (

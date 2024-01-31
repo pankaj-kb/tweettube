@@ -1,8 +1,5 @@
-import SideBar from "../components/SideBar";
-import SearchBar from "../components/SearchBar";
 import VideoCard from "../components/VideoCard";
-// import { useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 
