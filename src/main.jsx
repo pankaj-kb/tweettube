@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -14,14 +15,17 @@ import WatchHistoryPage from "./pages/WatchHistoryPage.jsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Outlet,
   Route,
   RouterProvider,
 } from "react-router-dom";
 import SubscriptionsPage from "./pages/SubscriptionsPage.jsx";
+import Layout from "./Layout/Layout.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/">
+    // <Route path="/" element={<AuthCheck><Layout/></AuthCheck>}>
+    <Route path="/" element={<Layout />}>
       <Route
         path=""
         element={
