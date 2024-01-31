@@ -58,7 +58,7 @@ function SubscriptionsPage() {
 
   return (
     <div className="flex bg-accentblack min-h-screen">
-      <SideBar />
+      <SideBar/>
       <div className="flex flex-col flex-1">
         <div className="sticky top-0 bg-accentblack p-4">
           <SearchBar

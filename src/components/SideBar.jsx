@@ -24,13 +24,33 @@ function SideBar() {
       </div>
 
       <div className="lg:flex items-center h-[15%] text-accentwhite">
-        <ToolTip text="Profile">
-          <CgProfile className={sideBarLoogosClasses} />
-        </ToolTip>
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            [
+              isActive
+                ? "text-accentpink border-b-[2px] border-accentpink"
+                : "",
+            ].join(" ")
+          }
+        >
+          <ToolTip text="Profile">
+            <CgProfile className={sideBarLoogosClasses} />
+          </ToolTip>
+        </NavLink>
       </div>
 
       <div className="lg:flex items-center h-[15%] text-accentwhite">
-        <NavLink to="subscriptions">
+        <NavLink
+          to="/subscriptions"
+          className={({ isActive }) =>
+            [
+              isActive
+                ? "text-accentpink border-b-[2px] border-accentpink"
+                : "",
+            ].join(" ")
+          }
+        >
           <ToolTip text="Subscriptions">
             <MdSubscriptions className={sideBarLoogosClasses} />
           </ToolTip>
@@ -38,21 +58,54 @@ function SideBar() {
       </div>
 
       <div className="lg:flex items-center h-[15%] text-accentwhite">
-        <ToolTip text="tweets">
-          <TfiCommentsSmiley className={sideBarLoogosClasses} />
-        </ToolTip>
+        <NavLink
+          to="/tweets"
+          className={({ isActive }) =>
+            [
+              isActive
+                ? "text-accentpink border-b-[2px] border-accentpink"
+                : "",
+            ].join(" ")
+          }
+        >
+          <ToolTip text="tweets">
+            <TfiCommentsSmiley className={sideBarLoogosClasses} />
+          </ToolTip>
+        </NavLink>
       </div>
 
       <div className="lg:flex items-center h-[15%] text-accentwhite">
-        <ToolTip text="Watch-History">
-          <FaClockRotateLeft className={sideBarLoogosClasses} />
-        </ToolTip>
+        <NavLink
+          to="/watch-history"
+          className={({ isActive }) =>
+            [
+              isActive
+                ? "text-accentpink border-b-[2px] border-accentpink"
+                : "",
+            ].join(" ")
+          }
+        >
+          <ToolTip text="Watch-History">
+            <FaClockRotateLeft className={sideBarLoogosClasses} />
+          </ToolTip>
+        </NavLink>
       </div>
 
       <div className="lg:flex items-center h-[15%] text-accentwhite">
-        <ToolTip text="Developer Info">
-          <FaCircleInfo className={sideBarLoogosClasses} />
-        </ToolTip>
+        <NavLink
+          to="/dev-info"
+          className={({ isActive }) =>
+            [
+              isActive
+                ? "text-accentpink border-b-[2px] border-accentpink"
+                : "",
+            ].join(" ")
+          }
+        >
+          <ToolTip text="Developer Info">
+            <FaCircleInfo className={sideBarLoogosClasses} />
+          </ToolTip>
+        </NavLink>
       </div>
 
       <LogoutButton
