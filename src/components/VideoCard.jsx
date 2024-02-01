@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 function VideoCard({ video }) {
   const videoSeconds = video.time;
@@ -7,11 +9,18 @@ function VideoCard({ video }) {
     remSeconds < 10 ? "0" : ""
   }${Math.floor(remSeconds)}`;
 
+  const navigate = useNavigate()
+  
+  const handleOnClick = () => {
+    navigate(`video/${video._id}`)
+  }
+
   return (
     <div
       className="overflow-hidden flex flex-col w-[300px] h-full
      bg-accentblack text-accentwhite transition-transform 
      transform-gpu hover:scale-105 cursor-pointer rounded-xl"
+     onClick={handleOnClick}
     >
       <div className="flex flex-col object-contain">
         <img

@@ -1,12 +1,11 @@
 import VideoCard from "../components/VideoCard";
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 function HomePage() {
   // const loginStatus = useSelector((state) => state.auth.status);
   // console.log(loginStatus);
-  
+
   // const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
 
@@ -23,6 +22,7 @@ function HomePage() {
       // console.log(fetchVideos)
       // console.log(typeof fetchVideos)
       setVideos(fetchVideos);
+      console.log(videos);
       // console.log(videos)
     };
 
@@ -31,10 +31,10 @@ function HomePage() {
 
   return (
     <div className="flex flex-wrap p-8 gap-12 items-center justify-center">
-    {videos.map((video) => (
-      <VideoCard key={video._id} video={video} />
-    ))}
-  </div>
+      {videos.map((video) => (
+        <VideoCard key={video._id} video={video} />
+      ))}
+    </div>
   );
 }
 

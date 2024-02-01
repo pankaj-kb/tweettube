@@ -8,9 +8,9 @@ function Layout() {
 
   return (
     loginStatus ? (
-      <div className="flex bg-accentblack min-h-screen">
+      <div className="flex min-h-screen bg-accentblack">
         <SideBar />
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col flex-1 overflow-y-auto">
           <div className="sticky top-0 bg-accentblack p-4">
             <SearchBar
               placeholder="what's next ??"

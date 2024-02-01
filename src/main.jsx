@@ -21,6 +21,7 @@ import {
 } from "react-router-dom";
 import SubscriptionsPage from "./pages/SubscriptionsPage.jsx";
 import Layout from "./Layout/Layout.jsx";
+import VideoPage from "./pages/VideoPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +32,14 @@ const router = createBrowserRouter(
         element={
           <AuthCheck>
             <HomePage />
+          </AuthCheck>
+        }
+      />
+       <Route
+        path="video/:videoId"
+        element={
+          <AuthCheck>
+            <VideoPage />
           </AuthCheck>
         }
       />
