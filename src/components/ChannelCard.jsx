@@ -12,7 +12,10 @@ function ChannelCard({ channel, onClick, clickToggle }) {
       />
       <div className="flex flex-col gap-[10px] items-center">
         <h1 className="text-center font-semibold text-[18px] cursor-pointer">
-          {channel.username}
+          {channel.fullName}
+        </h1>
+        <h1 className="text-center font-semibold text-[14px] cursor-pointer">
+          @{channel.username}
         </h1>
         <button
           onClick={onClick}

@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "./store/store.js";
 import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
@@ -55,6 +55,14 @@ const router = createBrowserRouter(
       />
       <Route
         path="profile"
+        element={
+          <AuthCheck>
+            <ProfilePage />
+          </AuthCheck>
+        }
+      />
+      <Route
+        path="profile/:username"
         element={
           <AuthCheck>
             <ProfilePage />

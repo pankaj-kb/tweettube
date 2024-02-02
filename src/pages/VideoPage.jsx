@@ -32,12 +32,12 @@ function VideoPage() {
   return (
     <div
       className="text-accentwhite flex flex-col items-center
-     bg-accentgray p-8 overflow-hidden rounded-lg"
+     p-8 overflow-hidden rounded-lg"
     >
       <div className="flex flex-col">
         <VideoPlayer video={video} />
         <div className="flex flex-col gap-2">
-          <h2 className="text-[25px] font-semibold text-center pt-2">
+          <h2 className="text-[25px] font-semibold text-start pt-2">
             {video.title}
           </h2>
           <div className="flex gap-4 text-[16px] font-light">

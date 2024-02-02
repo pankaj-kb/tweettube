@@ -19,10 +19,7 @@ function TweetsPage() {
   return (
     <div className="text-accentwhite flex flex-wrap p-8 gap-12 items-start justify-start">
     {tweets.map((tweet) => (
-      <TweetCard key={tweet._id} avatar={tweet.owner.avatar} 
-      tweetText={tweet.content}
-       ownerUsername={tweet.owner.username} 
-       ownerName={tweet.owner.fullName} />
+      <TweetCard key={tweet._id} tweet={tweet} />
     ))}
     </div>
   );

@@ -12,6 +12,7 @@ function HomePage() {
           `/video/?page=1&limit=10&sortBy=desccreatedAt&sortType=desc`
         );
         const fetchVideos = response.data.data.videos;
+        
         setVideos(fetchVideos);
       } catch (error) {
         console.error(error);

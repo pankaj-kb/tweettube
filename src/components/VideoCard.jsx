@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import OwnerTile from "./OwnerTile";
 
 /* eslint-disable react/prop-types */
-function VideoCard({ video }) {
+function VideoCard({ video, owner }) {
   const videoSeconds = video.time;
   const minutes = Math.floor(videoSeconds / 60);
   const remSeconds = videoSeconds % 60;
@@ -14,6 +15,9 @@ function VideoCard({ video }) {
   const handleOnClick = () => {
     navigate(`video/${video._id}`)
   }
+
+  // const owner = video.owner
+  // console.log(owner)
 
   return (
     <div
@@ -38,12 +42,21 @@ function VideoCard({ video }) {
       <div className="bg-accentgray flex flex-col pt-[2%] p-2">
         <h1 className="text-center font-medium text-[18px]">{video.title}</h1>
         <div className="flex justify-start items-center gap-2.5">
-          <img
-            src={video.owner.avatar}
-            alt="channel avatar"
-            className="w-[10%] rounded-full object-cover"
-          />
-          <h2 className="font-medium text-center">{video.owner.username}</h2>
+        <OwnerTile
+              avatar={owner?.avatar}
+              ownerName={owner?.fullName}
+              ownerUsername={owner?.username}
+              ownerId={owner?._id}
+              mainDivClass={"flex gap-4 items-center cursor-pointer"}
+              avatarClass={"h-[50px] rounded-full object-contain"}
+              infoDivClass={"flex flex-col"}
+              fullNameClass={"text-[18px] font-semibold"}
+              usernameClass={"text-[13px] font-light"}
+              showButton={false}
+              buttonClass={
+                "p-2 ml-6 w-[110px] rounded-md font-semibold text-center"
+              }
+            />
         </div>
       </div>
     </div>

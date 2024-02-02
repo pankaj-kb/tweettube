@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-function TweetCard({ avatar, tweetText, ownerUsername, ownerName }) {
+import OwnerTile from "./OwnerTile";
+function TweetCard({ tweet, owner }) {
+  // console.log(owner)
+  console.log("tweet: ",tweet)
   return (
     <div
       className="bg-accentgray flex flex-col
@@ -8,21 +11,27 @@ function TweetCard({ avatar, tweetText, ownerUsername, ownerName }) {
      border-accentpink rounded-xl p-8 cursor-pointer gap-[20px] border-opacity-50 overflow-hidden transition-transform 
      transform-gpu hover:scale-110"
     >
-      <div className="flex items-center content-center 
-      gap-[20px] cursor-pointer border-b-2 border-accentpink pb-3">
-        <img
-          src={avatar}
-          alt="user-avatar"
-          className="w-[10%] object-contain rounded-full"
+      <div
+        className="flex items-center content-center 
+      gap-[20px] cursor-pointer border-b-2 border-accentpink pb-3"
+      >
+        <OwnerTile
+          avatar={owner?.avatar}
+          ownerName={owner?.fullName}
+          ownerUsername={owner?.username}
+          ownerId={owner?._id}
+          mainDivClass={"flex gap-2 items-center cursor-pointer"}
+          avatarClass={"h-[40px] rounded-full object-contain"}
+          infoDivClass={"flex flex-col"}
+          fullNameClass={"text-[15px] font-semibold"}
+          usernameClass={"text-[10px] font-light"}
+          showButton={false}
+          buttonClass={"p-1 w-[90%] rounded-md font-semibold text-center"}
         />
-        <div className="flex flex-col">
-        <h6 className="font-bold">{ownerName}</h6>
-        <span className="text-[85%]">@{ownerUsername}</span>
-        </div>
       </div>
       <div className="flex flex-col items-start content-start">
         <h3 className="text-start font-medium text-[15px]">
-          {tweetText}....
+          {tweet?.content}....
         </h3>
       </div>
       {/* later approach */}

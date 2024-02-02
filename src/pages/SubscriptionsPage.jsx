@@ -4,6 +4,7 @@ import SearchBar from "../components/SearchBar";
 import SideBar from "../components/SideBar";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import OwnerTile from "../components/OwnerTile";
 
 function SubscriptionsPage() {
   const [channels, setChannels] = useState([]);

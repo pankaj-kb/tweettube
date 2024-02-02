@@ -58,7 +58,7 @@ function OwnerTile({
       </div>
       {showButton ? (
         <button
-          className={`${buttonClass} ${subscribed ? 'bg-accentblack' : 'bg-accentpink'}`}
+          className={`${buttonClass} ${subscribed ? 'bg-accentgray' : 'bg-accentpink'}`}
           onClick={handleClick}
         >
           {subscribed ? "Subscribed" : "Subscribe"}
