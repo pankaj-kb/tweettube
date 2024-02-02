@@ -22,6 +22,7 @@ import {
 import SubscriptionsPage from "./pages/SubscriptionsPage.jsx";
 import Layout from "./Layout/Layout.jsx";
 import VideoPage from "./pages/VideoPage.jsx";
+import UserProfilePage from "./pages/UserProfilePage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,7 +36,7 @@ const router = createBrowserRouter(
           </AuthCheck>
         }
       />
-       <Route
+      <Route
         path="video/:videoId"
         element={
           <AuthCheck>
@@ -65,7 +66,7 @@ const router = createBrowserRouter(
         path="profile/:username"
         element={
           <AuthCheck>
-            <ProfilePage />
+            <UserProfilePage />
           </AuthCheck>
         }
       />

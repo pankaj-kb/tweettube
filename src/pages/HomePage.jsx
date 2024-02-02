@@ -12,7 +12,7 @@ function HomePage() {
           `/video/?page=1&limit=10&sortBy=desccreatedAt&sortType=desc`
         );
         const fetchVideos = response.data.data.videos;
-        
+
         setVideos(fetchVideos);
       } catch (error) {
         console.error(error);
@@ -27,7 +27,7 @@ function HomePage() {
   return (
     <div className="flex flex-wrap p-8 gap-12 items-center justify-center">
       {videos.map((video) => (
-        <VideoCard key={video._id} video={video} />
+        <VideoCard key={video._id} video={video} owner={video.owner} />
       ))}
     </div>
   );

@@ -13,7 +13,7 @@ function VideoCard({ video, owner }) {
   const navigate = useNavigate()
   
   const handleOnClick = () => {
-    navigate(`video/${video._id}`)
+    navigate(`/video/${video._id}`)
   }
 
   // const owner = video.owner
@@ -24,9 +24,8 @@ function VideoCard({ video, owner }) {
       className="overflow-hidden flex flex-col w-[300px] h-full
      bg-accentblack text-accentwhite transition-transform 
      transform-gpu hover:scale-105 cursor-pointer rounded-xl"
-     onClick={handleOnClick}
     >
-      <div className="flex flex-col object-contain">
+      <div className="flex flex-col object-contain" onClick={handleOnClick}>
         <img
           src={video?.thumbnail}
           alt="video thumbnail"

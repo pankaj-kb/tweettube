@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 function OwnerTile({
@@ -19,6 +20,8 @@ function OwnerTile({
   const [subscribed, setSubscribed] = useState(false);
   const userData = useSelector((state) => state.auth.userData);
   const subscriberId = userData.data._id;
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     const checkSubscription = async () => {
@@ -36,7 +39,7 @@ function OwnerTile({
     checkSubscription();
   }, [subscriberId, ownerId]);
 
-  const handleClick = async () => {
+  const handleSubscribe = async () => {
     try {
       const toggleSub = await axios.post(`/subscription/c/${ownerId}`);
       if (!toggleSub) {
@@ -49,17 +52,25 @@ function OwnerTile({
     }
   };
 
+  const handleProfileClick = async () => {
+    try {
+      navigate(`/profile/${ownerUsername}`)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div className={mainDivClass}>
-      <img src={avatar} alt="user-avatar" className={avatarClass} />
-      <div className={infoDivClass}>
+      <img src={avatar} alt="user-avatar" className={avatarClass}  onClick={handleProfileClick}/>
+      <div className={infoDivClass} onClick={handleProfileClick}>
         <h6 className={fullNameClass}>{ownerName}</h6>
         <span className={usernameClass}>@{ownerUsername}</span>
       </div>
       {showButton ? (
         <button
           className={`${buttonClass} ${subscribed ? 'bg-accentgray' : 'bg-accentpink'}`}
-          onClick={handleClick}
+          onClick={handleSubscribe}
         >
           {subscribed ? "Subscribed" : "Subscribe"}
         </button>
