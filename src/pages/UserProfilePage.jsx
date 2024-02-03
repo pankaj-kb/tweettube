@@ -47,13 +47,13 @@ function UserProfilePage() {
           <img
             src={user?.avatar}
             alt="user-avatar"
-            className="rounded-full h-[200px]"
+            className="rounded-full h-[200px] border-[5px] border-accentpink"
           />
-          {/* <div className="flex flex-col items-start gap-2">
+          <div className="flex flex-col items-start gap-2">
             <h1 className="font-semibold text-[30px]">{user?.fullName}</h1>
             <h1 className="font-light text-[18px]">@{user?.username}</h1>
             <h1 className="font-medium text-[20px]">{user?.email}</h1>
-          </div> */}
+          </div>
         </div>
         <div className="flex flex-col p-8 border-accentpink border-r-2 items-start">
           <h1 className="font-semibold text-[25px]">

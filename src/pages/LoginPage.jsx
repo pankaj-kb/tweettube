@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "../axiosConfig.js";
 import { login } from "../features/authSlice.js";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Input from "../components/Input.jsx";
 import Button from "../components/Button.jsx";
 import Logo from "../components/Logo.jsx";
@@ -10,28 +10,8 @@ import { useNavigate, NavLink } from "react-router-dom";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const loginStatus = useSelector((state) => state.auth.status);
   const [buttonText, setButtonText] = useState("Login");
   const navigate = useNavigate();
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      try {
-        const response = await axios.get("/users/current-user");
-        if (response.data.statusCode === 200) {
-          dispatch(login(response.data));
-        } else {
-          dispatch(login(null));
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    checkLoginStatus();
-    if (loginStatus) {
-      navigate("/");
-    }
-  }, [dispatch, loginStatus, navigate]);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -55,13 +35,16 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(`/users/login`, formData);
-      console.log(response.data);
+      console.log("response from LoginPage: ", response);
       if (response.data.statusCode === 200) {
-        dispatch(login(response.data));
+        dispatch(login(response.data.data.user));
         navigate("/");
+      } else {
+        console.error("Unexpected response:", response.data);
+        setButtonText("failed");
       }
     } catch (error) {
-      console.error("login Failed: ", error.response.data);
+      console.error("Login Failed: ", error);
       setButtonText("failed");
     }
   };

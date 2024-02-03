@@ -1,4 +1,3 @@
-import { CgProfile } from "react-icons/cg";
 import { MdSubscriptions } from "react-icons/md";
 import { TfiCommentsSmiley } from "react-icons/tfi";
 import { FaClockRotateLeft } from "react-icons/fa6";
@@ -8,11 +7,15 @@ import { BiSolidExit } from "react-icons/bi";
 import LogoutButton from "./LogoutButton";
 import ToolTip from "./ToolTip";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function SideBar() {
+  const user = useSelector((state) => state.auth.userData);
   return (
-    <div className="lg:flex flex-col h-screen w-[5%] items-center justify-start
-     bg-accentblack">
+    <div
+      className="lg:flex flex-col h-screen w-[5%] items-center justify-start
+     bg-accentblack"
+    >
       <div className="lg:h-[10%] flex items-center">
         <ToolTip text="Home">
           <NavLink to="/">
@@ -35,7 +38,12 @@ function SideBar() {
           }
         >
           <ToolTip text="Profile">
-            <CgProfile className={sideBarLoogosClasses} />
+            {/* <CgProfile className={sideBarLoogosClasses} /> */}
+            <img
+              src={user.avatar}
+              alt="user-avatar"
+              className="rounded-full h-[70px] border-2 border-accentpink"
+            />
           </ToolTip>
         </NavLink>
       </div>

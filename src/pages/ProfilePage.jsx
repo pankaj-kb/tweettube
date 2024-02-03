@@ -3,16 +3,19 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import VideoCard from "../components/VideoCard";
 import TweetCard from "../components/TweetCard";
+// import { useParams } from "react-router-dom";
 
 function ProfilePage() {
   const [stats, setStats] = useState(null);
   const [deepStats, setDeepStats] = useState(null);
-  const user = useSelector((state) => state.auth.userData.data);
+  const [user, setUser] = useState(null);
+  // const { username } = useParams();
+  const username = useSelector((state) => state.auth.userData.data.username);
 
   useEffect(() => {
     const getUserStats = async () => {
       try {
-        const response = await axios.get("/dashboard/stats");
+        const response = await axios.get(`/dashboard/stats/${username}`);
         setStats(response.data.data);
         setDeepStats(response.data.data.userStatsAggregation[0]);
       } catch (error) {
@@ -20,8 +23,19 @@ function ProfilePage() {
       }
     };
 
+    const getUserProfile = async () => {
+      try {
+        const response = await axios.get(`/users/${username}`);
+        // console.log("from UserProfile: ", response.data.data);
+        setUser(response.data.data);
+      } catch (error) {
+        console.error("error while fetching user: ", error);
+      }
+    };
+
     getUserStats();
-  }, []);
+    getUserProfile();
+  }, [username]);
 
   const allTweets = deepStats?.allTweets;
   const allVideos = deepStats?.allVideos;
@@ -63,14 +77,18 @@ function ProfilePage() {
       </div>
       <div className="flex flex-wrap pt-4 pl-12 gap-12 items-start">
         {allVideos && allVideos.length > 0 ? (
-          allVideos.map((video) => <VideoCard key={video._id} video={video} owner={user} />)
+          allVideos.map((video) => (
+            <VideoCard key={video._id} video={video} owner={user} />
+          ))
         ) : (
           <p>No Videos Available</p>
         )}
       </div>
       <div className="flex flex-wrap pt-4 pl-12 gap-12 items-start">
         {allTweets && allTweets.length > 0 ? (
-          allTweets.map((tweet) => <TweetCard key={tweet._id} tweet={tweet} owner={user} />)
+          allTweets.map((tweet) => (
+            <TweetCard key={tweet._id} tweet={tweet} owner={user} />
+          ))
         ) : (
           <p>No tweets available</p>
         )}

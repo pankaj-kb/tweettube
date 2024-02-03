@@ -23,8 +23,10 @@ import SubscriptionsPage from "./pages/SubscriptionsPage.jsx";
 import Layout from "./Layout/Layout.jsx";
 import VideoPage from "./pages/VideoPage.jsx";
 import UserProfilePage from "./pages/UserProfilePage.jsx";
+import AuthRouter from "./components/AuthRouter.jsx";
+import LoginCheck from "./components/LoginCheck.jsx";
 
-const router = createBrowserRouter(
+export const router = createBrowserRouter(
   createRoutesFromElements(
     // <Route path="/" element={<AuthCheck><Layout/></AuthCheck>}>
     <Route path="/" element={<Layout />}>
@@ -44,8 +46,22 @@ const router = createBrowserRouter(
           </AuthCheck>
         }
       />
-      <Route path="login" element={<LoginPage />} />
-      <Route path="register" element={<RegisterPage />} />
+      <Route
+        path="login"
+        element={
+          <LoginCheck>
+            <LoginPage />
+          </LoginCheck>
+        }
+      />
+      <Route
+        path="register"
+        element={
+          <LoginCheck>
+            <RegisterPage />
+          </LoginCheck>
+        }
+      />
       <Route
         path="subscriptions"
         element={
@@ -100,6 +116,6 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <RouterProvider router={router} />
+    <AuthRouter />
   </Provider>
 );

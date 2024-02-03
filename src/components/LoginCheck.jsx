@@ -2,10 +2,10 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const AuthCheck = ({ children }) => {
+const LoginCheck = ({ children }) => {
   const isAuthenticated = useSelector((state) => state.auth.status);
 
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  return isAuthenticated ? <Navigate to="/" /> : children;
 };
 
-export default AuthCheck;
+export default LoginCheck;

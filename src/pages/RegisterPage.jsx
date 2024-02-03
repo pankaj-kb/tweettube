@@ -1,45 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import axios from "../axiosConfig.js";
 import Button from "../components/Button.jsx";
 import Input from "../components/Input.jsx";
 import Logo from "../components/Logo.jsx";
 import { NavLink } from "react-router-dom";
-import { login } from "../features/authSlice.js";
 import {
   buttonClasses,
   inputClasses,
   fileInputClasses,
   disabledButtonClasses,
 } from "../components/classesImporter.jsx";
-import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
-  const loginStatus = useSelector((state) => state.auth.status);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      try {
-        const response = await axios.get("/users/current-user");
-        console.log(response);
-        if (response.data.statusCode === 200) {
-          dispatch(login(response.data));
-        } else {
-          dispatch(login(null));
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    checkLoginStatus();
-    if (loginStatus) {
-      console.log("Already Logged in.");
-      navigate("/home");
-    }
-  }, [dispatch, loginStatus, navigate]);
-
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -47,6 +20,8 @@ const RegisterPage = () => {
     password: "",
     avatar: null,
   });
+
+  const navigate = useNavigate();
 
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -85,7 +60,9 @@ const RegisterPage = () => {
     if (selectedFile) {
       try {
         const response = await axios.post("/users/register", formDataWithFile);
-        console.log(response.data);
+        if (response.data.statusCode === 200) {
+          navigate("/login");
+        }
         setFormData({
           fullName: "",
           email: "",

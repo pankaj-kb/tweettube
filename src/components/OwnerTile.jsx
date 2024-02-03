@@ -19,18 +19,21 @@ function OwnerTile({
 }) {
   const [subscribed, setSubscribed] = useState(false);
   const userData = useSelector((state) => state.auth.userData);
-  const subscriberId = userData.data._id;
-  const navigate = useNavigate()
-
+  const subscriberId = userData._id;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkSubscription = async () => {
       try {
         const response = await axios.get(`/subscription/c/${subscriberId}`);
-        const mapChannels = response.data.data.flatMap(
-          (channel) => channel.subscriptionList
-        );
-        setSubscribed(mapChannels.some((channel) => channel._id === ownerId));
+        if (response.data.data) {
+          const mapChannels = response.data.data.flatMap(
+            (channel) => channel.subscriptionList
+          );
+          setSubscribed(mapChannels.some((channel) => channel._id === ownerId));
+        }
+
+        setSubscribed(false);
       } catch (error) {
         console.error(error);
       }
@@ -54,22 +57,29 @@ function OwnerTile({
 
   const handleProfileClick = async () => {
     try {
-      navigate(`/profile/${ownerUsername}`)
+      navigate(`/profile/${ownerUsername}`);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   return (
     <div className={mainDivClass}>
-      <img src={avatar} alt="user-avatar" className={avatarClass}  onClick={handleProfileClick}/>
+      <img
+        src={avatar}
+        alt="user-avatar"
+        className={avatarClass}
+        onClick={handleProfileClick}
+      />
       <div className={infoDivClass} onClick={handleProfileClick}>
         <h6 className={fullNameClass}>{ownerName}</h6>
         <span className={usernameClass}>@{ownerUsername}</span>
       </div>
       {showButton ? (
         <button
-          className={`${buttonClass} ${subscribed ? 'bg-accentgray' : 'bg-accentpink'}`}
+          className={`${buttonClass} ${
+            subscribed ? "bg-accentgray" : "bg-accentpink"
+          }`}
           onClick={handleSubscribe}
         >
           {subscribed ? "Subscribed" : "Subscribe"}
