@@ -1,8 +1,25 @@
-@import url('./fonts.css'); 
+@import url('./fonts.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    font-family:'ClashDisplay-Variable'
+    font-family: 'ClashDisplay-Variable'
+}
+
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.animate-fadeInOut {
+    animation: fadeInOut 2s infinite;
 }

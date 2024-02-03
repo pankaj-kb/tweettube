@@ -90,7 +90,7 @@ function UserProfilePage() {
           <div className="flex flex-col items-start gap-2">
             <h1 className="font-semibold text-[30px]">{user?.fullName}</h1>
             <h1 className="font-light text-[18px]">@{user?.username}</h1>
-            <h1 className="font-medium text-[20px]">{user?.email}</h1>
+            {/* <h1 className="font-medium text-[20px]">{user?.email}</h1> */}
             <button
               className={`p-2 w-[140px] rounded-md text-center text-[20px] font-semibold ${subscribed ? "bg-accentgray" : "bg-accentpink"}`}
               onClick={handleSubscribe}

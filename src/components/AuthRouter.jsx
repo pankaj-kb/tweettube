@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from "../features/authSlice";
 import { RouterProvider } from "react-router-dom";
 import { router } from "../main";
+import LoadingScreen from "../pages/LoadingScree";
 
 function AuthRouter() {
   const [loading, setLoading] = useState(true);
@@ -17,7 +18,7 @@ function AuthRouter() {
       try {
         setLoading(true);
         const response = await axios.get("/users/current-user");
-        console.log("from AuthRouter: ", response)
+        console.log("from AuthRouter: ", response);
         if (response.data.statusCode === 200) {
           dispatch(login(response.data.data.user));
         } else {
@@ -41,7 +42,7 @@ function AuthRouter() {
   }, [loginStatus, userData]);
 
   return (
-    <>{loading ? <p>Loading ...</p> : <RouterProvider router={router} />}</>
+    <>{loading ? <LoadingScreen /> : <RouterProvider router={router} />}</>
   );
 }
 
