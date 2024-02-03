@@ -10,12 +10,14 @@ function ProfilePage() {
   const [deepStats, setDeepStats] = useState(null);
   const [user, setUser] = useState(null);
   // const { username } = useParams();
-  const username = useSelector((state) => state.auth.userData.data.username);
+  const { username } = useSelector((state) => state.auth.userData);
+  console.log("from User Data line 14", username);
 
   useEffect(() => {
     const getUserStats = async () => {
       try {
         const response = await axios.get(`/dashboard/stats/${username}`);
+        console.log(username);
         setStats(response.data.data);
         setDeepStats(response.data.data.userStatsAggregation[0]);
       } catch (error) {
@@ -26,6 +28,7 @@ function ProfilePage() {
     const getUserProfile = async () => {
       try {
         const response = await axios.get(`/users/${username}`);
+        console.log(username);
         // console.log("from UserProfile: ", response.data.data);
         setUser(response.data.data);
       } catch (error) {

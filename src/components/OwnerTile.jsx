@@ -8,7 +8,6 @@ function OwnerTile({
   avatar,
   ownerName,
   ownerUsername,
-  mainDivClass,
   avatarClass,
   infoDivClass,
   usernameClass,
@@ -18,9 +17,9 @@ function OwnerTile({
   ownerId,
 }) {
   const [subscribed, setSubscribed] = useState(false);
+  const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
   const subscriberId = userData._id;
-  const navigate = useNavigate();
 
   useEffect(() => {
     const checkSubscription = async () => {
@@ -31,9 +30,9 @@ function OwnerTile({
             (channel) => channel.subscriptionList
           );
           setSubscribed(mapChannels.some((channel) => channel._id === ownerId));
+        } else {
+          setSubscribed(false);
         }
-
-        setSubscribed(false);
       } catch (error) {
         console.error(error);
       }
@@ -64,7 +63,7 @@ function OwnerTile({
   };
 
   return (
-    <div className={mainDivClass}>
+    <>
       <img
         src={avatar}
         alt="user-avatar"
@@ -87,7 +86,7 @@ function OwnerTile({
       ) : (
         ""
       )}
-    </div>
+    </>
   );
 }
 
