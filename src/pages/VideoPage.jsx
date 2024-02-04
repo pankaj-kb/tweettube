@@ -45,22 +45,25 @@ function VideoPage() {
             <h2>views: {video.views}</h2>
           </div>
           <div className="flex flex-col pt-2 items-start content-center gap-4">
-            <OwnerTile
-              avatar={owner?.avatar}
-              ownerName={owner?.fullName}
-              ownerUsername={owner?.username}
-              ownerId={owner?._id}
-              mainDivClass={"flex gap-4 items-center cursor-pointer"}
-              avatarClass={"h-[50px] rounded-full object-contain"}
-              infoDivClass={"flex flex-col"}
-              fullNameClass={"text-[18px] font-semibold"}
-              usernameClass={"text-[13px] font-light"}
-              showButton={true}
-              buttonClass={
-                "p-2 ml-6 w-[110px] rounded-md font-semibold text-center"
-              }
-            />
-            <h4 className="text-[18px] font-light">{video.description}</h4>
+            <div className="flex gap-4 items-center cursor-pointer py-2">
+              <OwnerTile
+                avatar={owner?.avatar}
+                ownerName={owner?.fullName}
+                ownerUsername={owner?.username}
+                ownerId={owner?._id}
+                avatarClass={"h-[50px] rounded-full object-contain"}
+                infoDivClass={"flex flex-col"}
+                fullNameClass={"text-[18px] font-semibold"}
+                usernameClass={"text-[13px] font-light"}
+                showButton={true}
+                buttonClass={
+                  "p-2 ml-6 w-[110px] rounded-md font-semibold text-center"
+                }
+              />
+            </div>
+            <div>
+              <h4 className="text-[18px] font-light">{video.description}</h4>
+            </div>
           </div>
         </div>
       </div>

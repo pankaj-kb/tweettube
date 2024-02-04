@@ -3,8 +3,8 @@ import React from "react";
 
 const LoadingScreen = () => {
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-800">
-      <div className="text-4xl text-white font-semibold animate-fadeInOut">
+    <div className="flex h-screen items-center justify-center bg-accentblack">
+      <div className="text-4xl text-accentpink font-semibold animate-fadeInOut">
         Loading
       </div>
     </div>
