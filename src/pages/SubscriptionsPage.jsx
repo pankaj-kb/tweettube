@@ -64,7 +64,7 @@ function SubscriptionsPage() {
       ))}
     </div>
   ) : (
-    <NoContentPage />
+    <NoContentPage/>
   );
 }
 
