@@ -8,7 +8,7 @@ import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import AuthCheck from "./AuthCheck.jsx";
-import TweetsPage from "./pages/TweetsPage.jsx";
+import AllTweetsPage from "./pages/AllTweetsPage.jsx";
 import DevInfoPage from "./pages/DevInfoPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import WatchHistoryPage from "./pages/WatchHistoryPage.jsx";
@@ -25,7 +25,7 @@ import VideoPage from "./pages/VideoPage.jsx";
 import UserProfilePage from "./pages/UserProfilePage.jsx";
 import AuthRouter from "./components/AuthRouter.jsx";
 import LoginCheck from "./components/LoginCheck.jsx";
-import LoadingScreen from "./pages/LoadingScreen.jsx";
+import TweetPage from "./pages/TweetPage.jsx";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,7 +43,7 @@ export const router = createBrowserRouter(
         path="video/:videoId"
         element={
           <AuthCheck>
-              <VideoPage />
+            <VideoPage />
           </AuthCheck>
         }
       />
@@ -91,7 +91,15 @@ export const router = createBrowserRouter(
         path="tweets"
         element={
           <AuthCheck>
-            <TweetsPage />
+            <AllTweetsPage />
+          </AuthCheck>
+        }
+      />
+      <Route
+        path="tweet/:tweetId"
+        element={
+          <AuthCheck>
+            <TweetPage />
           </AuthCheck>
         }
       />

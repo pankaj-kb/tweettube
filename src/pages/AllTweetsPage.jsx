@@ -8,7 +8,7 @@ function TweetsPage() {
 
   useEffect(() => {
     const getTweets = async () => {
-      const response = await axios.get("/tweet/all/?page=1&limit=10&sortBy=desccreatedAt&sortType=desc");
+      const response = await axios.get("/tweet/?page=1&limit=10&sortBy=desccreatedAt&sortType=desc");
       const fetchedTweets = response.data.data.tweets;
       console.log(fetchedTweets);
       setTweets(fetchedTweets)

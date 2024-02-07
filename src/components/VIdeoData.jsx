@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useParams } from "react-router-dom";
 import VideoPlayer from "../components/VideoPlayer.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -7,8 +6,8 @@ import { formatDistanceToNow, parseISO } from "date-fns";
 import OwnerTile from "../components/OwnerTile.jsx";
 
 function VideoData({ videoId }) {
-  const [video, setVideo] = useState([]);
-  const [owner, setOwner] = useState("");
+  const [video, setVideo] = useState({});
+  const [owner, setOwner] = useState({});
   const [relativeTime, setRelativeTime] = useState("Decades to come");
 
   useEffect(() => {
