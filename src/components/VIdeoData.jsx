@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { formatDistanceToNow, parseISO } from "date-fns";
 import OwnerTile from "../components/OwnerTile.jsx";
+import { FaShareAlt } from "react-icons/fa";
+import LikeView from "../components/LikeView";
 
 function VideoData({ videoId }) {
   const [video, setVideo] = useState({});
@@ -27,6 +29,10 @@ function VideoData({ videoId }) {
 
     fetchVideo();
   }, [videoId]);
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+  };
 
   return (
     <div
@@ -59,7 +65,20 @@ function VideoData({ videoId }) {
                   "p-2 ml-6 w-[110px] rounded-md font-semibold text-center"
                 }
               />
+              <div className="flex gap-6 items-center px-2">
+                <LikeView
+                  postId={video._id}
+                  postType={"video"}
+                  likeClass={"text-[22px] hover:cursor-pointer"}
+                />
+                <FaShareAlt
+                  onClick={handleCopyLink}
+                  className="text-[22px] focus:text-accentpink
+         hover:text-accentpink hover:cursor-pointer"
+                />
+              </div>
             </div>
+
             <div>
               <h4 className="text-[18px] font-light">{video.description}</h4>
             </div>
