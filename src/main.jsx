@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Provider, useSelector } from "react-redux";
@@ -25,6 +25,7 @@ import VideoPage from "./pages/VideoPage.jsx";
 import UserProfilePage from "./pages/UserProfilePage.jsx";
 import AuthRouter from "./components/AuthRouter.jsx";
 import LoginCheck from "./components/LoginCheck.jsx";
+import LoadingScreen from "./pages/LoadingScreen.jsx";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,7 +43,7 @@ export const router = createBrowserRouter(
         path="video/:videoId"
         element={
           <AuthCheck>
-            <VideoPage />
+              <VideoPage />
           </AuthCheck>
         }
       />

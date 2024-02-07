@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from "../features/authSlice";
 import { RouterProvider } from "react-router-dom";
 import { router } from "../main";
-import LoadingScreen from "../pages/LoadingScree";
+import LoadingScreen from "../pages/LoadingScreen";
 
 function AuthRouter() {
   const [loading, setLoading] = useState(true);
@@ -27,19 +27,19 @@ function AuthRouter() {
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false); // Move this line here to ensure it's called after the API call
+        setLoading(false); 
       }
     };
     getUser();
   }, [dispatch]);
 
-  useEffect(() => {
-    if (loginStatus) {
-      if (userData && userData.data) {
-        setLoading(false);
-      }
-    }
-  }, [loginStatus, userData]);
+  // useEffect(() => {
+  //   if (loginStatus) {
+  //     if (userData && userData.data) {
+  //       setLoading(false);
+  //     }
+  //   }
+  // }, [loginStatus, userData]);
 
   return (
     <>{loading ? <LoadingScreen /> : <RouterProvider router={router} />}</>
