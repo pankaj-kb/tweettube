@@ -10,15 +10,17 @@ function AuthRouter() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
-  const loginStatus = useSelector((state) => state.auth.status);
-  const userData = useSelector((state) => state.auth.userData);
+  // const loginStatus = useSelector((state) => state.auth.status);
+  // const userData = useSelector((state) => state.auth.userData);
 
   useEffect(() => {
     const getUser = async () => {
       try {
         setLoading(true);
+        const refreshToken = await axios.get(`/users/refresh-token`);
+        console.log(refreshToken);
         const response = await axios.get("/users/current-user");
-        console.log("from AuthRouter: ", response);
+        // console.log("from AuthRouter: ", response);
         if (response.data.statusCode === 200) {
           dispatch(login(response.data.data.user));
         } else {
@@ -27,7 +29,7 @@ function AuthRouter() {
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
     getUser();

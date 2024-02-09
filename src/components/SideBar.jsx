@@ -1,5 +1,5 @@
 import { MdSubscriptions } from "react-icons/md";
-import { TfiCommentsSmiley } from "react-icons/tfi";
+import { PiBirdFill } from "react-icons/pi";
 import { FaClockRotateLeft } from "react-icons/fa6";
 import { FaCircleInfo } from "react-icons/fa6";
 import { sideBarLoogosClasses } from "./classesImporter";
@@ -77,7 +77,7 @@ function SideBar() {
           }
         >
           <ToolTip text="tweets">
-            <TfiCommentsSmiley className={sideBarLoogosClasses} />
+            <PiBirdFill className={sideBarLoogosClasses} />
           </ToolTip>
         </NavLink>
       </div>
