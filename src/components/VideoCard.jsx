@@ -17,7 +17,7 @@ function VideoCard({ video, owner }) {
   };
 
   // const owner = video.owner
-  console.log("from line 21 VideoCard: ", owner);
+  // console.log("from line 21 VideoCard: ", owner);
 
   return (
     <div

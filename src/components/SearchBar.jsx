@@ -8,7 +8,6 @@ function SearchBar({
   divClassName,
   inputClassName,
   buttonClassName,
-  value,
   name,
 }) {
   const navigate = useNavigate();
@@ -16,7 +15,8 @@ function SearchBar({
   const [query, setQuery] = useState("");
 
   const search = () => {
-    navigate(`SearchPage/?query=${query}`);
+    if(query)
+    navigate(`/search/query=${query}`);
   };
 
   const handleOnChange = (e) => {
@@ -31,7 +31,6 @@ function SearchBar({
         onChange={handleOnChange}
         placeholder={placeholder}
         className={inputClassName}
-        value={value}
       />
       <button className={buttonClassName} onClick={search}>
         {buttonText}
