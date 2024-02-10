@@ -33,8 +33,8 @@ function TweetPage() {
   }, [tweetId]);
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href)
-  }
+    navigator.clipboard.writeText(window.location.href);
+  };
 
   return (
     <div
@@ -47,10 +47,7 @@ function TweetPage() {
       rounded-xl border-accentpink shadow-accentpink shadow-md w-[20%]"
       >
         <OwnerTile
-          avatar={owner?.avatar}
-          ownerName={owner?.fullName}
-          ownerUsername={owner?.username}
-          ownerId={owner?._id}
+          owner={owner}
           avatarClass={"h-[50px] rounded-full object-contain"}
           infoDivClass={"flex flex-col"}
           fullNameClass={"text-[18px] font-semibold"}
@@ -68,13 +65,18 @@ function TweetPage() {
         <span className="font-light text-[12px] px-12">{relativeTime}</span>
       </div>
       <div className="flex gap-20 items-center py-4">
-        <LikeView postId={tweetId} postType={'tweet'} likeClass={"text-[22px] hover:cursor-pointer"}/>
+        <LikeView
+          postId={tweetId}
+          postType={"tweet"}
+          likeClass={"text-[22px] hover:cursor-pointer"}
+        />
         <FaShareAlt
-        // value={window.location.href}
-        // ref={urlRef}
-        onClick={handleCopyLink}
-         className="text-[22px] focus:text-accentpink
-         hover:text-accentpink hover:cursor-pointer"/>
+          // value={window.location.href}
+          // ref={urlRef}
+          onClick={handleCopyLink}
+          className="text-[22px] focus:text-accentpink
+         hover:text-accentpink hover:cursor-pointer"
+        />
       </div>
     </div>
   );

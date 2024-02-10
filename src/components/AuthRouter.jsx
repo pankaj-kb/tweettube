@@ -17,8 +17,8 @@ function AuthRouter() {
     const getUser = async () => {
       try {
         setLoading(true);
-        const refreshToken = await axios.get(`/users/refresh-token`);
-        console.log(refreshToken);
+        // const refreshToken = await axios.get(`/users/refresh-token`);
+        // console.log(refreshToken);
         const response = await axios.get("/users/current-user");
         // console.log("from AuthRouter: ", response);
         if (response.data.statusCode === 200) {

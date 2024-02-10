@@ -9,7 +9,7 @@ function VideoGallary() {
     const getAllVideos = async () => {
       try {
         const response = await axios.get(
-          `/video/?page=1&limit=10&sortBy=desccreatedAt&sortType=desc`
+          `video/?page=1&limit=10&sortBy=createdAt&sortType=desc`
         );
         const fetchVideos = response.data.data.videos;
 

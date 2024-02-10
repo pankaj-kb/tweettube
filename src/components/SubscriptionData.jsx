@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import ChannelCard from "../components/ChannelCard";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import NoContentPage from "../pages/NoContentPage";
+import OwnerTile from "./OwnerTile";
 
 function SubscriptionData() {
   const [channels, setChannels] = useState([]);
@@ -17,16 +17,13 @@ function SubscriptionData() {
     const getChannels = async () => {
       try {
         const response = await axios.get(`/subscription/c/${subscriberId}`);
-        // console.log(response);
 
         if (response.data.data) {
           const mapChannels = response.data.data.flatMap(
             (channel) => channel.subscriptionList
           );
 
-          setChannels((prevChannels) =>
-            mapChannels.map((channel) => ({ ...channel, clickToggle: false }))
-          );
+          setChannels(() => mapChannels.map((channel) => ({ ...channel })));
         }
       } catch (error) {
         console.error("Error fetching channels", error);
@@ -35,32 +32,27 @@ function SubscriptionData() {
     getChannels();
   }, [subscriberId]);
 
-  const handleOnClick = async (clickedChannelId) => {
-    try {
-      const toggleSub = await axios.post(`/subscription/c/${clickedChannelId}`);
-      console.log(toggleSub);
-
-      setChannels((prevChannels) =>
-        prevChannels.map((channel) =>
-          channel._id === clickedChannelId
-            ? { ...channel, clickToggle: !channel.clickToggle }
-            : channel
-        )
-      );
-    } catch (error) {
-      console.error("Something went wrong.", error);
-    }
-  };
-
   return channels.length ? (
-    <div className="flex flex-wrap p-8 gap-12 items-center justify-start">
+    <div className="flex flex-wrap gap-20 overflow-hidden p-20 text-accentwhite">
       {channels.map((channel) => (
-        <ChannelCard
+        <div
+          className="flex flex-col items-center justify-center gap-4"
           key={channel._id}
-          channel={channel}
-          onClick={() => handleOnClick(channel._id)}
-          clickToggle={channel.clickToggle}
-        />
+        >
+          <OwnerTile
+            owner={channel}
+            avatarClass={"object-cover w-[180px] rounded-full cursor-pointer"}
+            infoDivClass={"flex flex-col"}
+            fullNameClass={
+              "text-center font-semibold text-[25px] cursor-pointer"
+            }
+            usernameClass={"text-center font-medium text-[15px] cursor-pointer"}
+            showButton={true}
+            buttonClass={
+              "text-center font-semibold rounded-lg h-auto text-[22px] p-2"
+            }
+          />
+        </div>
       ))}
     </div>
   ) : (

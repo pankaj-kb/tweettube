@@ -24,10 +24,7 @@ function TweetCard({ tweet, owner }) {
       gap-[20px] cursor-pointer border-b-2 border-accentpink pb-3"
       >
         <OwnerTile
-          avatar={owner?.avatar}
-          ownerName={owner?.fullName}
-          ownerUsername={owner?.username}
-          ownerId={owner?._id}
+          owner={owner}
           mainDivClass={"flex gap-2 items-center cursor-pointer"}
           avatarClass={"h-[40px] rounded-full object-contain"}
           infoDivClass={"flex flex-col"}

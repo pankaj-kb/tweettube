@@ -52,10 +52,7 @@ function VideoData({ videoId }) {
           <div className="flex flex-col pt-2 items-start content-center gap-4">
             <div className="flex gap-4 items-center cursor-pointer py-2">
               <OwnerTile
-                avatar={owner?.avatar}
-                ownerName={owner?.fullName}
-                ownerUsername={owner?.username}
-                ownerId={owner?._id}
+                owner={owner}
                 avatarClass={"h-[50px] rounded-full object-contain"}
                 infoDivClass={"flex flex-col"}
                 fullNameClass={"text-[18px] font-semibold"}

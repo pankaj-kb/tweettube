@@ -3,15 +3,13 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import VideoCard from "../components/VideoCard";
 import TweetCard from "../components/TweetCard";
-// import { useParams } from "react-router-dom";
+import OwnerTile from "../components/OwnerTile";
 
 function ProfilePage() {
   const [stats, setStats] = useState(null);
   const [deepStats, setDeepStats] = useState(null);
   const [user, setUser] = useState(null);
-  // const { username } = useParams();
   const { username } = useSelector((state) => state.auth.userData);
-  console.log("from User Data line 14", username);
 
   useEffect(() => {
     const getUserStats = async () => {
@@ -47,16 +45,16 @@ function ProfilePage() {
     <div className="text-accentwhite flex flex-col p-8 gap-12">
       <div className="flex pl-[20%]">
         <div className="flex items-center gap-10 border-accentpink pr-8 border-r-2">
-          <img
-            src={user?.avatar}
-            alt="user-avatar"
-            className="rounded-full h-[200px] border-[5px] border-accentpink"
+          <OwnerTile
+            owner={user}
+            avatarClass={
+              "rounded-full h-[200px] border-[5px] border-accentpink"
+            }
+            infoDivClass={"flex flex-col items-start gap-2"}
+            fullNameClass={"font-semibold text-[30px]"}
+            usernameClass={"font-light text-[18px]"}
+            showButton={false}
           />
-          <div className="flex flex-col items-start gap-2">
-            <h1 className="font-semibold text-[30px]">{user?.fullName}</h1>
-            <h1 className="font-light text-[18px]">@{user?.username}</h1>
-            <h1 className="font-medium text-[20px]">{user?.email}</h1>
-          </div>
         </div>
         <div className="flex flex-col p-8 border-accentpink border-r-2 items-start">
           <h1 className="font-semibold text-[25px]">
@@ -78,7 +76,7 @@ function ProfilePage() {
           </h1>
         </div>
       </div>
-      <div className="flex flex-wrap pt-4 pl-12 gap-12 items-start">
+      <div className="flex flex-wrap py-4 px-[10%] gap-12 items-start">
         {allVideos && allVideos.length > 0 ? (
           allVideos.map((video) => (
             <VideoCard key={video._id} video={video} owner={user} />
@@ -87,7 +85,7 @@ function ProfilePage() {
           <p>No Videos Available</p>
         )}
       </div>
-      <div className="flex flex-wrap pt-4 pl-12 gap-12 items-start">
+      <div className="flex flex-wrap py-4 px-[10%] gap-12 items-start">
         {allTweets && allTweets.length > 0 ? (
           allTweets.map((tweet) => (
             <TweetCard key={tweet._id} tweet={tweet} owner={user} />

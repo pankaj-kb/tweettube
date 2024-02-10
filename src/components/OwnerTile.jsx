@@ -5,16 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 function OwnerTile({
-  avatar,
-  ownerName,
-  ownerUsername,
+  owner,
   avatarClass,
   infoDivClass,
   usernameClass,
   fullNameClass,
   buttonClass,
   showButton,
-  ownerId,
 }) {
   const [subscribed, setSubscribed] = useState(false);
   const navigate = useNavigate();
@@ -29,7 +26,9 @@ function OwnerTile({
           const mapChannels = response.data.data.flatMap(
             (channel) => channel.subscriptionList
           );
-          setSubscribed(mapChannels.some((channel) => channel._id === ownerId));
+          setSubscribed(
+            mapChannels.some((channel) => channel._id === owner?._id)
+          );
         } else {
           setSubscribed(false);
         }
@@ -39,11 +38,11 @@ function OwnerTile({
     };
 
     checkSubscription();
-  }, [subscriberId, ownerId]);
+  }, [subscriberId, owner?._id]);
 
   const handleSubscribe = async () => {
     try {
-      const toggleSub = await axios.post(`/subscription/c/${ownerId}`);
+      const toggleSub = await axios.post(`/subscription/c/${owner?._id}`);
       if (!toggleSub) {
         console.log("Cant toggle subscription.");
       }
@@ -56,7 +55,7 @@ function OwnerTile({
 
   const handleProfileClick = async () => {
     try {
-      navigate(`/profile/${ownerUsername}`);
+      navigate(`/profile/${owner?.username}`);
     } catch (error) {
       console.error(error);
     }
@@ -65,14 +64,14 @@ function OwnerTile({
   return (
     <>
       <img
-        src={avatar}
+        src={owner?.avatar}
         alt="user-avatar"
         className={avatarClass}
         onClick={handleProfileClick}
       />
       <div className={infoDivClass} onClick={handleProfileClick}>
-        <h6 className={fullNameClass}>{ownerName}</h6>
-        <span className={usernameClass}>@{ownerUsername}</span>
+        <h6 className={fullNameClass}>{owner?.fullName}</h6>
+        <span className={usernameClass}>@{owner?.username}</span>
       </div>
       {showButton ? (
         <button

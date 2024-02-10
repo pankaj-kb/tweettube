@@ -10,14 +10,14 @@ function VideoCard({ video, owner }) {
     remSeconds < 10 ? "0" : ""
   }${Math.floor(remSeconds)}`;
 
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+
   const handleOnClick = () => {
-    navigate(`/video/${video._id}`)
-  }
+    navigate(`/video/${video._id}`);
+  };
 
   // const owner = video.owner
-  // console.log(owner)
+  console.log("from line 21 VideoCard: ", owner);
 
   return (
     <div
@@ -41,21 +41,18 @@ function VideoCard({ video, owner }) {
       <div className="bg-accentgray flex flex-col pt-[2%] p-2">
         <h1 className="text-center font-medium text-[18px]">{video.title}</h1>
         <div className="flex justify-start items-center gap-2.5">
-        <OwnerTile
-              avatar={owner?.avatar}
-              ownerName={owner?.fullName}
-              ownerUsername={owner?.username}
-              ownerId={owner?._id}
-              mainDivClass={"flex gap-4 items-center cursor-pointer"}
-              avatarClass={"h-[50px] rounded-full object-contain"}
-              infoDivClass={"flex flex-col"}
-              fullNameClass={"text-[18px] font-semibold"}
-              usernameClass={"text-[13px] font-light"}
-              showButton={false}
-              buttonClass={
-                "p-2 ml-6 w-[110px] rounded-md font-semibold text-center"
-              }
-            />
+          <OwnerTile
+            owner={owner}
+            mainDivClass={"flex gap-4 items-center cursor-pointer"}
+            avatarClass={"h-[50px] rounded-full object-contain"}
+            infoDivClass={"flex flex-col"}
+            fullNameClass={"text-[18px] font-semibold"}
+            usernameClass={"text-[13px] font-light"}
+            showButton={false}
+            buttonClass={
+              "p-2 ml-6 w-[110px] rounded-md font-semibold text-center"
+            }
+          />
         </div>
       </div>
     </div>
