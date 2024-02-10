@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import store from "./store/store.js";
 import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
@@ -15,9 +15,7 @@ import WatchHistoryPage from "./pages/WatchHistoryPage.jsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Outlet,
   Route,
-  RouterProvider,
 } from "react-router-dom";
 import SubscriptionsPage from "./pages/SubscriptionsPage.jsx";
 import Layout from "./Layout/Layout.jsx";
@@ -26,6 +24,7 @@ import UserProfilePage from "./pages/UserProfilePage.jsx";
 import AuthRouter from "./components/AuthRouter.jsx";
 import LoginCheck from "./components/LoginCheck.jsx";
 import TweetPage from "./pages/TweetPage.jsx";
+import SearchPage from "./pages/SearchPage.jsx";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -116,6 +115,14 @@ export const router = createBrowserRouter(
         element={
           <AuthCheck>
             <DevInfoPage />
+          </AuthCheck>
+        }
+      />
+      <Route
+        path="search/:query"
+        element={
+          <AuthCheck>
+            <SearchPage />
           </AuthCheck>
         }
       />
