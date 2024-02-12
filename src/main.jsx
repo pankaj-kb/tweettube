@@ -20,7 +20,6 @@ import {
 import SubscriptionsPage from "./pages/SubscriptionsPage.jsx";
 import Layout from "./Layout/Layout.jsx";
 import VideoPage from "./pages/VideoPage.jsx";
-import UserProfilePage from "./pages/UserProfilePage.jsx";
 import AuthRouter from "./components/AuthRouter.jsx";
 import LoginCheck from "./components/LoginCheck.jsx";
 import TweetPage from "./pages/TweetPage.jsx";
@@ -71,18 +70,10 @@ export const router = createBrowserRouter(
         }
       />
       <Route
-        path="profile"
-        element={
-          <AuthCheck>
-            <ProfilePage />
-          </AuthCheck>
-        }
-      />
-      <Route
         path="profile/:username"
         element={
           <AuthCheck>
-            <UserProfilePage />
+            <ProfilePage />
           </AuthCheck>
         }
       />

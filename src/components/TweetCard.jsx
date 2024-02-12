@@ -15,8 +15,9 @@ function TweetCard({ tweet, owner }) {
   return (
     <div
       className="bg-accentgray flex flex-col
-    w-[300px] h-[50%] border-[2px]
-     border-accentpink rounded-xl p-8 cursor-pointer gap-[20px] border-opacity-50 overflow-hidden transition-transform 
+      w-[300px] h-auto border-[2px]
+     border-accentpink rounded-xl p-8 cursor-pointer gap-[20px] 
+     border-opacity-50 overflow-hidden transition-transform 
      transform-gpu hover:scale-110"
     >
       <div

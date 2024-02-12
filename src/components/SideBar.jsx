@@ -28,7 +28,7 @@ function SideBar() {
 
       <div className="lg:flex items-center h-[15%] text-accentwhite">
         <NavLink
-          to="/profile"
+          to={`/profile/${user.username}`}
           className={({ isActive }) =>
             [
               isActive

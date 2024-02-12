@@ -4,13 +4,13 @@ import { useSelector } from "react-redux";
 import VideoCard from "../components/VideoCard";
 import TweetCard from "../components/TweetCard";
 import OwnerTile from "../components/OwnerTile";
+import { useParams } from "react-router-dom";
 
 function ProfilePage() {
   const [stats, setStats] = useState(null);
   const [deepStats, setDeepStats] = useState(null);
   const [user, setUser] = useState(null);
-  const { username } = useSelector((state) => state.auth.userData);
-
+  const { username } = useParams();
   useEffect(() => {
     const getUserStats = async () => {
       try {

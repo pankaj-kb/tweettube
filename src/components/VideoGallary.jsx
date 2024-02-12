@@ -23,7 +23,7 @@ function VideoGallary() {
   }, []);
 
   return (
-    <div className="flex flex-wrap p-8 gap-12 items-center justify-center">
+    <div className="flex flex-wrap p-8 gap-12 items-center justify-start">
       {videos.map((video) => (
         <VideoCard key={video._id} video={video} owner={video.owner} />
       ))}

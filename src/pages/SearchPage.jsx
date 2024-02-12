@@ -28,30 +28,8 @@ function SearchPage() {
 
   return (
     <>
-      {(allVideos.length > 0 || allTweets.length > 0 || allUsers.length > 0)  ? (
+      {allVideos.length > 0 || allTweets.length > 0 || allUsers.length > 0 ? (
         <div className="text-accentwhite flex flex-col items-start gap-12 py-12 px-20 overflow-hidden">
-          <div className="flex flex-wrap gap-12 items-start">
-            {allVideos && allVideos.length > 0
-              ? allVideos.map((video) => (
-                  <VideoCard
-                    key={video._id}
-                    video={video}
-                    owner={video.owner}
-                  />
-                ))
-              : ""}
-          </div>
-          <div className="flex flex-wrap gap-12 items-start">
-            {allTweets && allTweets.length > 0
-              ? allTweets.map((tweet) => (
-                  <TweetCard
-                    key={tweet._id}
-                    tweet={tweet}
-                    owner={tweet.owner}
-                  />
-                ))
-              : ""}
-          </div>
           <div className="flex flex-wrap gap-12 items-start">
             {allUsers && allUsers.length > 0
               ? allUsers.map((user) => (
@@ -81,9 +59,31 @@ function SearchPage() {
                 ))
               : ""}
           </div>
+          <div className="flex flex-wrap gap-12 items-start">
+            {allVideos && allVideos.length > 0
+              ? allVideos.map((video) => (
+                  <VideoCard
+                    key={video._id}
+                    video={video}
+                    owner={video.owner}
+                  />
+                ))
+              : ""}
+          </div>
+          <div className="flex flex-wrap gap-12 items-start">
+            {allTweets && allTweets.length > 0
+              ? allTweets.map((tweet) => (
+                  <TweetCard
+                    key={tweet._id}
+                    tweet={tweet}
+                    owner={tweet.owner}
+                  />
+                ))
+              : ""}
+          </div>
         </div>
       ) : (
-        <NoContentPage text={"No results found...."}/>
+        <NoContentPage text={"No results found...."} />
       )}
     </>
   );

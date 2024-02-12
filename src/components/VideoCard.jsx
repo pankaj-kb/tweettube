@@ -21,7 +21,7 @@ function VideoCard({ video, owner }) {
 
   return (
     <div
-      className="overflow-hidden flex flex-col w-[300px] h-full
+      className="overflow-hidden flex flex-col w-[300px]
      bg-accentblack text-accentwhite transition-transform 
      transform-gpu hover:scale-105 cursor-pointer rounded-xl"
     >
