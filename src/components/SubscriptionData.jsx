@@ -41,7 +41,7 @@ function SubscriptionData() {
         >
           <OwnerTile
             owner={channel}
-            avatarClass={"object-cover w-[180px] rounded-full cursor-pointer"}
+            avatarClass={"object-contain w-[180px] h-[180px] rounded-full cursor-pointer"}
             infoDivClass={"flex flex-col"}
             fullNameClass={
               "text-center font-semibold text-[25px] cursor-pointer"

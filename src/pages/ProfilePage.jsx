@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import VideoCard from "../components/VideoCard";
 import TweetCard from "../components/TweetCard";
 import OwnerTile from "../components/OwnerTile";
@@ -27,7 +26,6 @@ function ProfilePage() {
       try {
         const response = await axios.get(`/users/${username}`);
         console.log(username);
-        // console.log("from UserProfile: ", response.data.data);
         setUser(response.data.data);
       } catch (error) {
         console.error("error while fetching user: ", error);
@@ -48,12 +46,15 @@ function ProfilePage() {
           <OwnerTile
             owner={user}
             avatarClass={
-              "rounded-full h-[200px] border-[5px] border-accentpink"
+              "rounded-full border-[5px] border-accentpink h-[180px] w-[180px] object-contain"
             }
             infoDivClass={"flex flex-col items-start gap-2"}
             fullNameClass={"font-semibold text-[30px]"}
             usernameClass={"font-light text-[18px]"}
-            showButton={false}
+            showButton={true}
+            buttonClass={
+              "p-2 w-[140px] rounded-md text-center text-[20px] font-semibold"
+            }
           />
         </div>
         <div className="flex flex-col p-8 border-accentpink border-r-2 items-start">

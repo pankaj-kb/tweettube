@@ -44,7 +44,7 @@ function VideoCard({ video, owner }) {
           <OwnerTile
             owner={owner}
             mainDivClass={"flex gap-4 items-center cursor-pointer"}
-            avatarClass={"h-[50px] rounded-full object-contain"}
+            avatarClass={"h-[50px] w-[50px] rounded-full object-contain"}
             infoDivClass={"flex flex-col"}
             fullNameClass={"text-[18px] font-semibold"}
             usernameClass={"text-[13px] font-light"}

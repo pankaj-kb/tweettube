@@ -7,7 +7,6 @@ function TweetCard({ tweet, owner }) {
   // console.log(owner)
   // console.log("tweet: ",tweet)
   const navigate = useNavigate();
-  console.log("Tweet ID ", tweet._id);
   const handleClick = () => {
     navigate(`/tweet/${tweet._id}`);
   };
@@ -27,7 +26,7 @@ function TweetCard({ tweet, owner }) {
         <OwnerTile
           owner={owner}
           mainDivClass={"flex gap-2 items-center cursor-pointer"}
-          avatarClass={"h-[40px] rounded-full object-contain"}
+          avatarClass={"h-[50px] w-[50px] rounded-full object-contain"}
           infoDivClass={"flex flex-col"}
           fullNameClass={"text-[15px] font-semibold"}
           usernameClass={"text-[10px] font-light"}
