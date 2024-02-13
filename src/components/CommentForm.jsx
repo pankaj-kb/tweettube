@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function CommentForm({ postId, inputClassName, buttonClasses }) {
+function CommentForm({ postId, postType, inputClassName, buttonClasses }) {
   const [commentText, setCommentText] = useState("");
-
+ 
   const handleChange = (e) => {
     setCommentText(e.target.value);
   };
@@ -15,8 +15,8 @@ function CommentForm({ postId, inputClassName, buttonClasses }) {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post(`/comment/${postId}`, {
-        comment: commentText,
+      const response = await axios.post(`/comment/${postType}/${postId}`, {
+        commentText: commentText,
       });
       console.log(response);
     } catch (error) {

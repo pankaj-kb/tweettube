@@ -83,6 +83,7 @@ function VideoData({ videoId }) {
             <div className="text-accentwhite flex gap-4 items-center">
               <CommentForm
                 postId={video._id}
+                postType={"v"}
                 inputClassName={
                   "p-1 bg-accentgray font-medium text-[18px] w-[700px] h-[130%] text-start focus:outline-none border-2 border-accentblack focus:border-accentpink hover:border-accentpink rounded-md"
                 }

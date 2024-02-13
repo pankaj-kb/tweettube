@@ -6,6 +6,7 @@ import OwnerTile from "../components/OwnerTile";
 import { FaShareAlt } from "react-icons/fa";
 import LikeView from "../components/LikeView";
 import CommentForm from "../components/CommentForm";
+import CommentsList from "../components/CommentsList";
 
 function TweetPage() {
   const { tweetId } = useParams();
@@ -83,6 +84,7 @@ function TweetPage() {
         <div className="text-accentwhite flex gap-4 items-center">
           <CommentForm
             postId={tweet._id}
+            postType={"t"}
             inputClassName={
               "p-1 bg-accentgray font-medium text-[18px] w-[400px] h-[130%] text-start focus:outline-none border-2 border-accentblack focus:border-accentpink hover:border-accentpink rounded-md"
             }
@@ -90,6 +92,10 @@ function TweetPage() {
               "bg-accentgray focus:bg-accentpink hover:bg-accentpink text-center rounded-md font-semibold h-[100%] p-1"
             }
           />
+        </div>
+        <div>
+        {/* Todo: Implment auto refresh of comments after submitting a comment */}
+          <CommentsList postId={tweet._id} postType={"t"}/>
         </div>
       </div>
     </div>
