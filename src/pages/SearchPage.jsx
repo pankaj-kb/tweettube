@@ -41,7 +41,7 @@ function SearchPage() {
                       key={user}
                       owner={user}
                       avatarClass={
-                        "object-cover w-[180px] rounded-full cursor-pointer"
+                        "object-contain w-[150px] h-[150px] rounded-full cursor-pointer"
                       }
                       infoDivClass={"flex flex-col"}
                       fullNameClass={
