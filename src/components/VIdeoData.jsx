@@ -6,6 +6,7 @@ import { formatDistanceToNow, parseISO } from "date-fns";
 import OwnerTile from "../components/OwnerTile.jsx";
 import { FaShareAlt } from "react-icons/fa";
 import LikeView from "../components/LikeView";
+import CommentForm from "./CommentForm.jsx";
 
 function VideoData({ videoId }) {
   const [video, setVideo] = useState({});
@@ -78,6 +79,17 @@ function VideoData({ videoId }) {
 
             <div>
               <h4 className="text-[18px] font-light">{video.description}</h4>
+            </div>
+            <div className="text-accentwhite flex gap-4 items-center">
+              <CommentForm
+                postId={video._id}
+                inputClassName={
+                  "p-1 bg-accentgray font-medium text-[18px] w-[700px] h-[130%] text-start focus:outline-none border-2 border-accentblack focus:border-accentpink hover:border-accentpink rounded-md"
+                }
+                buttonClasses={
+                  "bg-accentgray focus:bg-accentpink hover:bg-accentpink text-center rounded-md font-semibold h-[100%] p-1"
+                }
+              />
             </div>
           </div>
         </div>
