@@ -3,14 +3,20 @@ import { useEffect, useState } from "react";
 import VideoCard from "../components/VideoCard";
 import NoContentPage from "./NoContentPage";
 function WatchHistoryPage() {
-  const [videos, setVideos] = useState({});
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const getWatchHistory = async () => {
-      const response = await axios.get(`/users/watch-history`);
-      setVideos(response.data.data);
+      try {
+        const response = await axios.get(
+          `/view/watch-history/?page=1&limit=15&sortBy=createdAt&sortType=desc`
+        );
+        console.log("Received videos:", response.data.data.videos);
+        setVideos(response.data.data.videos);
+      } catch (error) {
+        console.error("Error fetching watch history:", error);
+      }
     };
-
     getWatchHistory();
   }, []);
 
@@ -19,7 +25,11 @@ function WatchHistoryPage() {
       {videos.length > 0 ? (
         <div className="flex flex-wrap p-8 gap-12 items-center justify-start">
           {videos.map((video) => (
-            <VideoCard key={video._id} video={video} owner={video.owner} />
+            <VideoCard
+              key={video.video._id}
+              video={video.video}
+              owner={video.video.owner}
+            />
           ))}
         </div>
       ) : (
