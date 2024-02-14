@@ -24,6 +24,8 @@ import AuthRouter from "./components/AuthRouter.jsx";
 import LoginCheck from "./components/LoginCheck.jsx";
 import TweetPage from "./pages/TweetPage.jsx";
 import SearchPage from "./pages/SearchPage.jsx";
+import VideoUploadPage from "./pages/VideoUploadPage.jsx";
+import TweetUploadPage from "./pages/TweetUploadPage.jsx";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -114,6 +116,22 @@ export const router = createBrowserRouter(
         element={
           <AuthCheck>
             <SearchPage />
+          </AuthCheck>
+        }
+      />
+      <Route
+        path="upload/video"
+        element={
+          <AuthCheck>
+            <VideoUploadPage />
+          </AuthCheck>
+        }
+      />
+      <Route
+        path="upload/tweet"
+        element={
+          <AuthCheck>
+            <TweetUploadPage />
           </AuthCheck>
         }
       />

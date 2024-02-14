@@ -12,10 +12,7 @@ import { useSelector } from "react-redux";
 function SideBar() {
   const user = useSelector((state) => state.auth.userData);
   return (
-    <div
-      className="lg:flex flex-col h-screen w-[5%] items-center justify-start
-     bg-accentblack"
-    >
+    <>
       <div className="lg:h-[10%] flex items-center">
         <ToolTip text="Home">
           <NavLink to="/">
@@ -124,7 +121,7 @@ function SideBar() {
           <BiSolidExit className={sideBarLoogosClasses} />
         </ToolTip>
       </LogoutButton>
-    </div>
+    </>
   );
 }
 
