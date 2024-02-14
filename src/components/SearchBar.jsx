@@ -1,11 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-/* eslint-disable react/prop-types */
 function SearchBar({
   placeholder,
   buttonText,
-  divClassName,
   inputClassName,
   buttonClassName,
   name,
@@ -15,8 +13,7 @@ function SearchBar({
   const [query, setQuery] = useState("");
 
   const search = () => {
-    if(query)
-    navigate(`/search/query=${query}`);
+    if (query) navigate(`/search/query=${query}`);
   };
 
   const handleOnChange = (e) => {
@@ -24,7 +21,7 @@ function SearchBar({
   };
 
   return (
-    <div className={divClassName}>
+    <>
       <input
         type="text"
         name={name}
@@ -35,7 +32,7 @@ function SearchBar({
       <button className={buttonClassName} onClick={search}>
         {buttonText}
       </button>
-    </div>
+    </>
   );
 }
 
