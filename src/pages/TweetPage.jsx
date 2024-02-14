@@ -93,7 +93,7 @@ function TweetPage() {
             }
           />
         </div>
-        <div>
+        <div className="flex flex-col p-2">
         {/* Todo: Implment auto refresh of comments after submitting a comment */}
           <CommentsList postId={tweet._id} postType={"t"}/>
         </div>

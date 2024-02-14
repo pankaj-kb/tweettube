@@ -7,6 +7,7 @@ import OwnerTile from "../components/OwnerTile.jsx";
 import { FaShareAlt } from "react-icons/fa";
 import LikeView from "../components/LikeView";
 import CommentForm from "./CommentForm.jsx";
+import CommentsList from "./CommentsList.jsx";
 
 function VideoData({ videoId }) {
   const [video, setVideo] = useState({});
@@ -91,6 +92,10 @@ function VideoData({ videoId }) {
                   "bg-accentgray focus:bg-accentpink hover:bg-accentpink text-center rounded-md font-semibold h-[100%] p-1"
                 }
               />
+            </div>
+            <div className="flex flex-col p-2">
+              {/* Todo: Implment auto refresh of comments after submitting a comment */}
+              <CommentsList postId={video._id} postType={"v"} />
             </div>
           </div>
         </div>
