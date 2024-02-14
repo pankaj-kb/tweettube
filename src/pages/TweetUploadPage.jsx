@@ -49,7 +49,7 @@ function TweetUploadPage() {
         className="bg-accentgray text-accentwhite font-medium h-[500px] w-[600px] 
     rounded-md text-[20px] border-2 p-2
     border-accentpink focus:outline-none focus:shadow-2
-    focus:shadow-accentpink text-start"
+    focus:shadow-accentpink text-start resize-none"
       />
 
       <button

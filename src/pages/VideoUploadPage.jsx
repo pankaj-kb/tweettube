@@ -1,37 +1,82 @@
 import { useRef, useState } from "react";
-import { buttonClasses, fileInputClasses, inputClasses } from "../components/classesImporter";
+import { buttonClasses, fileInputClasses } from "../components/classesImporter";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function VideoUploadPage() {
-  const navigate = useNavigate();
-
-  const fileInputRef = useRef(null);
-
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    videoFile: null,
-    thumbnailFile: null,
+    videoFile: "",
+    thumbnailFile: "",
   });
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedThumbnail, setSelectedThumbnail] = useState(null);
 
-  const [videoFile, setVideoFile] = useState(false);
-  const [thumbnailFile, setThumbnailFile] = useState(false);
+  const [uploadText, setUploadText] = useState("Upload Video");
 
-  const handleSubmit = () => {};
+  const navigate = useNavigate();
 
-  const handleChange = () => {};
+  const videoFileInputRef = useRef(null);
+  const thumbnailInputRef = useRef(null);
 
-  const handleFileChange = () => {};
+  const handleVideoUploadClick = (e) => {
+    e.preventDefault();
+    videoFileInputRef.current.click();
+  };
 
-  const handleFileButtonClick = () => {};
+  const handleThumbnailUploadClick = (e) => {
+    e.preventDefault();
+    thumbnailInputRef.current.click();
+  };
+
+  const handleVideoUpload = (e) => {
+    const file = e.target.files[0];
+    setSelectedVideo(file);
+  };
+
+  const handleThumbnailUpload = (e) => {
+    const file = e.target.files[0];
+    setSelectedThumbnail(file);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setUploadText("uploading....");
+
+    const formDataWithFile = new FormData();
+
+    formDataWithFile.append("title", formData.title);
+    formDataWithFile.append("description", formData.description);
+    formDataWithFile.append("videoFile", selectedVideo);
+    formDataWithFile.append("thumbnailFile", selectedThumbnail);
+
+    try {
+      const response = await axios.post(`/video/publish`, formDataWithFile);
+      console.log(response);
+      if (response.data.statusCode === 200) {
+        navigate(`/`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <div className="text-accentwhite">
+    <>
       <form
         onSubmit={handleSubmit}
-        className="lg:flex flex-col mr-[30px] gap-[20px] items-center mt-[15px]"
+        className="flex flex-col items-center justify-start p-6 gap-6"
       >
         <Input
           type="text"
@@ -39,41 +84,77 @@ function VideoUploadPage() {
           placeholder="title"
           value={formData.title}
           onChange={handleChange}
-          className={inputClasses}
+          className="bg-accentgray text-accentwhite font-medium 
+    rounded-md text-[20px] border-2 p-2
+    border-accentpink focus:outline-none focus:shadow-2
+    focus:shadow-accentpink text-start h-[50px] w-[500px]"
         />
-        <Input
+        <textarea
           type="text"
           name="description"
           placeholder="description"
           value={formData.description}
           onChange={handleChange}
-          className={inputClasses}
+          className="bg-accentgray text-accentwhite font-medium 
+    rounded-md text-[20px] border-2 p-2
+    border-accentpink focus:outline-none focus:shadow-2
+    focus:shadow-accentpink text-start resize-none h-[300px] w-[500px]"
         />
-        <Input
+        <input
           type="file"
+          name="videoFile"
           accept=".mkv, .mp4, .3gp"
-          name="video"
-          onChange={handleFileChange}
+          onChange={handleVideoUpload}
           className="hidden"
-          ref={fileInputRef}
+          ref={videoFileInputRef}
+          value={formData.videoFile}
         />
-        <Input
+        <input
           type="file"
-          name="thumbnail"
+          name="thumbnailFile"
           accept=".jpg, .jpeg, .png"
-          onChange={handleFileChange}
+          onChange={handleThumbnailUpload}
           className="hidden"
-          ref={fileInputRef}
+          ref={thumbnailInputRef}
+          value={formData.thumbnailFile}
         />
 
-        <Button onClick={handleFileButtonClick} className={fileInputClasses}>
-          {videoFile ? "avatar added" : "Upload Avatar"}
+        <Button onClick={handleVideoUploadClick} className={fileInputClasses}>
+          {selectedVideo ? "video added" : "Upload video"}
         </Button>
-        <Button className={buttonClasses} type="submit">
-          upload Video
+        {selectedVideo ? (
+          <video
+            src={URL.createObjectURL(selectedVideo)}
+            className="h-[20%]"
+            controls
+          ></video>
+        ) : (
+          ""
+        )}
+        <Button
+          className={fileInputClasses}
+          onClick={handleThumbnailUploadClick}
+        >
+          {selectedThumbnail ? "thumbnail added" : "Upload thumbnail"}
+        </Button>
+        {selectedThumbnail ? (
+          <img
+            src={URL.createObjectURL(selectedThumbnail)}
+            className="h-[120px]"
+          />
+        ) : (
+          ""
+        )}
+
+        <Button
+          className="text-accentwhite font-medium text-[20px] bg-accentgray p-2 
+        rounded-md hover:bg-accentpink disabled:cursor-not-allowed"
+          type="submit"
+        >
+          {uploadText}
         </Button>
       </form>
-    </div>
+    </>
   );
 }
 
