@@ -13,6 +13,8 @@ function LogoutButton({ type, children, className }) {
     e.preventDefault();
     try {
       const response = await axios.post(`/users/logout`, {});
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
       if (response.data.statusCode === 200) {
         dispatch(logout());
         navigate("/login");

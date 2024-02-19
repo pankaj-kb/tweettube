@@ -37,6 +37,8 @@ const LoginPage = () => {
       const response = await axios.post(`/users/login`, formData);
       console.log("response from LoginPage: ", response);
       if (response.data.statusCode === 200) {
+        localStorage.setItem("accessToken", response.data.data.accessToken);
+        localStorage.setItem("refreshToken", response.data.data.refreshToken);
         dispatch(login(response.data.data.user));
         navigate("/");
       } else {
@@ -52,7 +54,7 @@ const LoginPage = () => {
   return (
     <div
       className="bg-accentblack 
-                  text-accentwhite lg:flex h-screen 
+                  text-accentwhite flex h-screen 
                   justify-center items-center"
     >
       <Logo

@@ -10,14 +10,14 @@ function Layout() {
   return loginStatus ? (
     <div className="flex min-h-screen bg-accentblack">
       <div
-        className="lg:flex flex-col h-screen w-[5%] items-center justify-start
+        className="flex flex-col h-screen w-[5%] items-center justify-start
      bg-accentblack"
       >
         <SideBar />
       </div>
       <div className="flex flex-col flex-1 overflow-y-auto">
         <div className="sticky top-0 bg-accentblack p-4 flex items-center justify-center">
-          <div className="mx-[150px]">
+          <div className="mx-[150px] text-accentwhite">
             <SearchBar
               placeholder="what's next ??"
               buttonText="Search"
