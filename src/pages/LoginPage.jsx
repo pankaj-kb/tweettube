@@ -54,22 +54,15 @@ const LoginPage = () => {
   return (
     <div
       className="bg-accentblack 
-                  text-accentwhite flex h-screen 
-                  justify-center items-center"
-    >
-      <Logo
-        className={
-          "lg:absolute top-[5%] text-[50px] hover:cursor-pointer text-accentpink font-semibold"
-        }
-        spanClassName={
-          "hover:text-accentwhite border-b-[2px] border-b-accentblack hover:border-accentpink"
-        }
+                  text-accentwhite h-screen w-screen flex flex-col justify-center items-center border-[5px] border-opacity-60
+       border-accentpink rounded-sm md:border-none">
+      <Logo className={ "absolute top-2 left-5 text-[40px] hover:cursor-pointer text-accentpink font-semibold"}
+        spanClassName={"hover:text-accentwhite border-b-[2px] border-b-accentblack hover:border-accentpink"}
       />
       <div
-        className="lg:flex justify-center items-center border-[5px] border-opacity-55
-       border-accentpink h-[70%] w-[50%] rounded-[20px]"
+        className="flex"
       >
-        <div className="lg:flex-1">
+        <div className="hidden md:block">
           <h1 className="text-[50px] font-extrabold ml-[30%] text-accentpink whitespace-normal">
             <span className="block">You</span>
             <span className="block">seek</span>
@@ -77,10 +70,10 @@ const LoginPage = () => {
             <span className="block">content</span>
           </h1>
         </div>
-        <div className="lg:flex-1 mr-[40px]">
+        <div className="flex flex-col">
           <form
             onSubmit={handleSubmit}
-            className="lg:flex flex-col gap-[20px] items-center"
+            className="flex flex-col gap-5 items-center"
           >
             <Input
               type="email"
@@ -109,13 +102,13 @@ const LoginPage = () => {
             <Button type="submit" name="password" className={buttonClasses}>
               {buttonText}
             </Button>
-            <div className="flex gap-[20px]">
-              <h6 className="font-medium text-[15px] hover:cursor-pointer text-accentwhite hover:text-accentpink">
+            <div className="flex flex-col gap-2 md:flex-row md:gap-[20px]">
+              <h6 className="font-medium text-[18px] hover:cursor-pointer text-accentwhite hover:text-accentpink">
                 forgot password ?
               </h6>
               <NavLink to="/register">
-                <h6 className="font-medium text-[15px] hover:cursor-pointer text-accentwhite hover:text-accentpink">
-                  new user ? register
+                <h6 className="font-medium text-[18px] hover:cursor-pointer text-accentwhite hover:text-accentpink">
+                  new user ? register..
                 </h6>
               </NavLink>
             </div>

@@ -1,8 +1,8 @@
 import classNames from "classnames";
 
 const inputClasses = classNames(
-  "lg:h-[50px] bg-accentgray rounded-[10px] border-[2px] border-accentgray",
-  "w-[100%] text-center text-[20px] focus:outline-none",
+  "h-[50px] bg-accentgray rounded-[10px] border-[2px] border-accentgray",
+  "w-[110%] text-center text-[25px] focus:outline-none",
   "focus:border-accentpink focus:border-[2px] hover:cursor-pointer",
   "focus:border-opacity-50 hover:border-accentpink"
 );
@@ -22,7 +22,7 @@ const disabledButtonClasses = classNames(
 );
 
 const fileInputClasses = classNames(
-  "lg:text-[15px]",
+  "text-[15px]",
   "bg-accentgray text-accentwhite",
   "hover:bg-accentblack hover:cursor-pointer",
   "w-[100px] h-[50px] rounded-[10px] font-semibold border-[2px]",
