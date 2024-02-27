@@ -13,17 +13,7 @@ function SideBar() {
   const user = useSelector((state) => state.auth.userData);
   return (
     <>
-      <div className="lg:h-[10%] flex items-center">
-        <ToolTip text="Home">
-          <NavLink to="/">
-            <h1 className="lg:text-[20px] text-accentpink font-bold cursor-pointer">
-              Jaggary
-            </h1>
-          </NavLink>
-        </ToolTip>
-      </div>
-
-      <div className="lg:flex items-center h-[15%] text-accentwhite">
+      <div className="flex items-center text-accentwhite h-20">
         <NavLink
           to={`/profile/${user.username}`}
           className={({ isActive }) =>
@@ -39,13 +29,13 @@ function SideBar() {
             <img
               src={user.avatar}
               alt="user-avatar"
-              className="rounded-full h-[70px] border-2 border-accentpink"
+              className="rounded-full h-[50px] object-contain border-2 border-accentpink"
             />
           </ToolTip>
         </NavLink>
       </div>
 
-      <div className="lg:flex items-center h-[15%] text-accentwhite">
+      <div className="flex items-center text-accentwhite">
         <NavLink
           to="/subscriptions"
           className={({ isActive }) =>
@@ -62,7 +52,7 @@ function SideBar() {
         </NavLink>
       </div>
 
-      <div className="lg:flex items-center h-[15%] text-accentwhite">
+      <div className="flex items-center text-accentwhite">
         <NavLink
           to="/tweets"
           className={({ isActive }) =>
@@ -79,7 +69,7 @@ function SideBar() {
         </NavLink>
       </div>
 
-      <div className="lg:flex items-center h-[15%] text-accentwhite">
+      <div className="flex items-center text-accentwhite">
         <NavLink
           to="/watch-history"
           className={({ isActive }) =>
@@ -96,7 +86,7 @@ function SideBar() {
         </NavLink>
       </div>
 
-      <div className="lg:flex items-center h-[15%] text-accentwhite">
+      <div className="flex items-center text-accentwhite">
         <NavLink
           to="/dev-info"
           className={({ isActive }) =>
@@ -114,7 +104,7 @@ function SideBar() {
       </div>
 
       <LogoutButton
-        className="lg:flex items-center h-[15%] text-accentwhite"
+        className="flex items-center text-accentwhite"
         type="submit"
       >
         <ToolTip text="Logout">
