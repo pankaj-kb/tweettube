@@ -22,7 +22,7 @@ function Layout() {
       </div>
       <div
         className="flex flex-row border-t-4 border-opacity-65 border-accentpink 
-      rounded-t-lg bg-accentgray gap-8 
+      rounded-t-lg bg-accentgray gap-4
       justify-center absolute bottom-0 items-center w-[100%] h-20 z-50"
       >
         <SideBar />
