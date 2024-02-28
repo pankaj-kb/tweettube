@@ -31,7 +31,7 @@ const fileInputClasses = classNames(
 )
 
 const sideBarLoogosClasses = classNames(
-  "text-[35px] hover:text-accentpink cursor-pointer focus:text-accentpink"
+  "text-[40px] hover:text-accentpink cursor-pointer focus:text-accentpink h-[30px]"
 )
 
 export { inputClasses, buttonClasses, fileInputClasses, disabledButtonClasses, sideBarLoogosClasses }
