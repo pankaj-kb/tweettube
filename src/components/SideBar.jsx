@@ -8,14 +8,17 @@ import LogoutButton from "./LogoutButton";
 import ToolTip from "./ToolTip";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { IoMdHome } from "react-icons/io";
+import { BsUpload } from "react-icons/bs";
+import UploadButton from "./UploadButton";
 
 function SideBar() {
   const user = useSelector((state) => state.auth.userData);
   return (
     <>
-      <div className="flex items-center text-accentwhite h-20">
+      <div className="flex items-center justify-center text-accentwhite h-20">
         <NavLink
-          to={`/profile/${user.username}`}
+          to={`/`}
           className={({ isActive }) =>
             [
               isActive
@@ -24,13 +27,8 @@ function SideBar() {
             ].join(" ")
           }
         >
-          <ToolTip text="Profile">
-            {/* <CgProfile className={sideBarLoogosClasses} /> */}
-            <img
-              src={user.avatar}
-              alt="user-avatar"
-              className="rounded-full h-[50px] object-contain border-2 border-accentpink"
-            />
+          <ToolTip text="Home">
+            <IoMdHome className={sideBarLoogosClasses} />
           </ToolTip>
         </NavLink>
       </div>
@@ -69,6 +67,10 @@ function SideBar() {
         </NavLink>
       </div>
 
+      <div className="flex items-center text-accentwhite">
+      <UploadButton/>
+      </div>
+      
       <div className="flex items-center text-accentwhite">
         <NavLink
           to="/watch-history"
