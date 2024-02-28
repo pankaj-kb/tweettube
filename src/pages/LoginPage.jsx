@@ -60,14 +60,11 @@ const LoginPage = () => {
         spanClassName={"hover:text-accentwhite border-b-[2px] border-b-accentblack hover:border-accentpink"}
       />
       <div
-        className="flex"
+        className="flex md:flex-col md:gap-12"
       >
-        <div className="hidden md:block">
-          <h1 className="text-[50px] font-extrabold ml-[30%] text-accentpink whitespace-normal">
-            <span className="block">You</span>
-            <span className="block">seek</span>
-            <span className="block">great</span>
-            <span className="block">content</span>
+        <div className="hidden md:flex md:flex-col">
+          <h1 className="text-[50px] font-extrabold text-accentpink whitespace-normal">
+           great content awaits
           </h1>
         </div>
         <div className="flex flex-col">
