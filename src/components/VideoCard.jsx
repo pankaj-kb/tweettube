@@ -21,9 +21,9 @@ function VideoCard({ video, owner }) {
 
   return (
     <div
-      className="overflow-hidden flex flex-col w-[300px]
+      className="overflow-hidden flex flex-col w-screen md:w-[18%] md:h-[230px]
      bg-accentblack text-accentwhite transition-transform 
-     transform-gpu hover:scale-105 cursor-pointer rounded-xl"
+     transform-gpu hover:scale-105 cursor-pointer rounded-xl border-b-2 border-accentpink border-opacity-60"
     >
       <div className="flex flex-col object-contain" onClick={handleOnClick}>
         <img
