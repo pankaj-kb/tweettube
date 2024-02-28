@@ -8,24 +8,17 @@ import LogoutButton from "./LogoutButton";
 import ToolTip from "./ToolTip";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { IoMdHome } from "react-icons/io";
+import { BsUpload } from "react-icons/bs";
+import UploadButton from "./UploadButton";
 
 function SideBar() {
   const user = useSelector((state) => state.auth.userData);
   return (
     <>
-      <div className="lg:h-[10%] flex items-center">
-        <ToolTip text="Home">
-          <NavLink to="/">
-            <h1 className="lg:text-[20px] text-accentpink font-bold cursor-pointer">
-              Jaggary
-            </h1>
-          </NavLink>
-        </ToolTip>
-      </div>
-
-      <div className="lg:flex items-center h-[15%] text-accentwhite">
+      <div className="flex items-center justify-center text-accentwhite h-20">
         <NavLink
-          to={`/profile/${user.username}`}
+          to={`/`}
           className={({ isActive }) =>
             [
               isActive
@@ -34,18 +27,13 @@ function SideBar() {
             ].join(" ")
           }
         >
-          <ToolTip text="Profile">
-            {/* <CgProfile className={sideBarLoogosClasses} /> */}
-            <img
-              src={user.avatar}
-              alt="user-avatar"
-              className="rounded-full h-[70px] border-2 border-accentpink"
-            />
+          <ToolTip text="Home">
+            <IoMdHome className={sideBarLoogosClasses} />
           </ToolTip>
         </NavLink>
       </div>
 
-      <div className="lg:flex items-center h-[15%] text-accentwhite">
+      <div className="flex items-center text-accentwhite">
         <NavLink
           to="/subscriptions"
           className={({ isActive }) =>
@@ -62,7 +50,7 @@ function SideBar() {
         </NavLink>
       </div>
 
-      <div className="lg:flex items-center h-[15%] text-accentwhite">
+      <div className="flex items-center text-accentwhite">
         <NavLink
           to="/tweets"
           className={({ isActive }) =>
@@ -79,7 +67,11 @@ function SideBar() {
         </NavLink>
       </div>
 
-      <div className="lg:flex items-center h-[15%] text-accentwhite">
+      <div className="flex items-center text-accentwhite">
+      <UploadButton/>
+      </div>
+      
+      <div className="flex items-center text-accentwhite">
         <NavLink
           to="/watch-history"
           className={({ isActive }) =>
@@ -96,7 +88,7 @@ function SideBar() {
         </NavLink>
       </div>
 
-      <div className="lg:flex items-center h-[15%] text-accentwhite">
+      <div className="flex items-center text-accentwhite">
         <NavLink
           to="/dev-info"
           className={({ isActive }) =>
@@ -114,7 +106,7 @@ function SideBar() {
       </div>
 
       <LogoutButton
-        className="lg:flex items-center h-[15%] text-accentwhite"
+        className="flex items-center text-accentwhite"
         type="submit"
       >
         <ToolTip text="Logout">

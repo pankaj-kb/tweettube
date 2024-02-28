@@ -19,11 +19,21 @@ function VideoCard({ video, owner }) {
   // const owner = video.owner
   // console.log("from line 21 VideoCard: ", owner);
 
+  const truncateTitle = (title, maxWords) => {
+    const words = title.split(" ");
+    if (words.length > maxWords) {
+      return words.slice(0, maxWords).join(" ") + " ...";
+    }
+    return title;
+  };
+
+  const truncatedTitle = truncateTitle(video.title, 3);
+
   return (
     <div
-      className="overflow-hidden flex flex-col w-[300px]
+      className="overflow-hidden flex flex-col w-screen md:w-[18%] md:h-[230px]
      bg-accentblack text-accentwhite transition-transform 
-     transform-gpu hover:scale-105 cursor-pointer rounded-xl"
+     transform-gpu hover:scale-105 cursor-pointer rounded-xl border-b-2 border-accentpink border-opacity-60"
     >
       <div className="flex flex-col object-contain" onClick={handleOnClick}>
         <img
@@ -39,7 +49,9 @@ function VideoCard({ video, owner }) {
         </span>
       </div>
       <div className="bg-accentgray flex flex-col pt-[2%] p-2">
-        <h1 className="text-center font-medium text-[18px]">{video.title}</h1>
+        <h1 className="text-center font-medium text-[18px]">
+          {truncatedTitle}
+        </h1>
         <div className="flex justify-start items-center gap-2.5">
           <OwnerTile
             owner={owner}

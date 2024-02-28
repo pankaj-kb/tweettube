@@ -3,6 +3,7 @@ import { FaPlusCircle, FaVideo } from "react-icons/fa";
 import { PiBirdFill } from "react-icons/pi";
 import Tooltip from "./ToolTip";
 import { useNavigate } from "react-router-dom";
+import { BsUpload } from "react-icons/bs";
 
 function UploadButton() {
 
@@ -21,14 +22,14 @@ function UploadButton() {
   return (
     <>
       <Tooltip text={"upload"}>
-        <FaPlusCircle
+        <BsUpload
           className="text-accentpink text-[50px] cursor-pointer"
           onClick={handleExpand}
         />
       </Tooltip>
 
       {expand ? (
-        <div className="flex justify-center gap-5 mx-5">
+        <div className="flex justify-center items-center z-50 gap-8 absolute bottom-[100px]">
           <Tooltip text={"video"}>
             <FaVideo
               onClick={() => UploadPage("video")}

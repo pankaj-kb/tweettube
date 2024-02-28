@@ -38,11 +38,13 @@ function VideoData({ videoId }) {
 
   return (
     <div
-      className="text-accentwhite flex flex-col items-center
-     p-8 overflow-hidden rounded-lg"
+      className="text-accentwhite flex flex-col justify-start mt-24 items-center
+      overflow-hidden rounded-lg max-w-screen h-screen"
     >
       <div className="flex flex-col">
-        <VideoPlayer video={video} />
+        <div className="flex justify-center items-center">
+          <VideoPlayer video={video} />
+        </div>
         <div className="flex flex-col gap-2">
           <h2 className="text-[25px] font-semibold text-start pt-2">
             {video.title}
@@ -55,10 +57,10 @@ function VideoData({ videoId }) {
             <div className="flex gap-4 items-center cursor-pointer py-2">
               <OwnerTile
                 owner={owner}
-                avatarClass={"h-[50px] rounded-full object-contain"}
-                infoDivClass={"flex flex-col"}
-                fullNameClass={"text-[18px] font-semibold"}
-                usernameClass={"text-[13px] font-light"}
+                avatarClass="h-[50px] rounded-full object-contain"
+                infoDivClass="flex flex-col"
+                fullNameClass="text-[18px] font-semibold"
+                usernameClass="text-[13px] font-light"
                 showButton={true}
                 buttonClass={
                   "p-2 ml-6 w-[110px] rounded-md font-semibold text-center"
@@ -67,8 +69,8 @@ function VideoData({ videoId }) {
               <div className="flex gap-6 items-center px-2">
                 <LikeView
                   postId={video._id}
-                  postType={"video"}
-                  likeClass={"text-[22px] hover:cursor-pointer"}
+                  postType="video"
+                  likeClass="text-[22px] hover:cursor-pointer"
                 />
                 <FaShareAlt
                   onClick={handleCopyLink}
@@ -86,7 +88,7 @@ function VideoData({ videoId }) {
                 postId={video._id}
                 postType={"v"}
                 inputClassName={
-                  "p-1 bg-accentgray font-medium text-[18px] w-[700px] h-[130%] text-start focus:outline-none border-2 border-accentblack focus:border-accentpink hover:border-accentpink rounded-md"
+                  "p-1 bg-accentgray font-medium text-[18px] w-[60%] h-[130%] text-start focus:outline-none border-2 border-accentblack focus:border-accentpink hover:border-accentpink rounded-md"
                 }
                 buttonClasses={
                   "bg-accentgray focus:bg-accentpink hover:bg-accentpink text-center rounded-md font-semibold h-[100%] p-1"

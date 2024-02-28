@@ -80,33 +80,27 @@ const RegisterPage = () => {
   return (
     <div
       className="bg-accentblack 
-    text-accentwhite lg:flex h-screen 
-    justify-center items-center"
+                  text-accentwhite h-screen w-screen flex flex-col justify-center items-center border-[5px] border-opacity-60
+       border-accentpink rounded-sm md:border-none"
     >
       <Logo
         className={
-          "lg:absolute top-[5%] text-[50px] hover:cursor-pointer text-accentpink font-semibold"
+          "absolute top-2 left-5 text-[40px] hover:cursor-pointer text-accentpink font-semibold"
         }
         spanClassName={
           "hover:text-accentwhite border-b-[2px] border-b-accentblack hover:border-accentpink"
         }
       />
-      <div
-        className="lg:flex justify-center items-center border-[5px] border-opacity-55
-       border-accentpink h-[70%] w-[50%] rounded-[20px]"
-      >
-        <div className="lg:flex-1">
-          <h1 className="text-[50px] font-extrabold ml-[20%] text-accentpink whitespace-normal">
-            <span className="block">Your</span>
-            <span className="block">adventure</span>
-            <span className="block">begins</span>
-            <span className="block">here</span>
+      <div className="flex md:flex-col md:gap-12">
+        <div className="hidden md:flex md:flex-col">
+          <h1 className="text-[50px] font-extrabold text-accentpink whitespace-normal">
+            great content awaits
           </h1>
         </div>
-        <div className="lg:flex-1">
+        <div className="flex flex-col">
           <form
             onSubmit={handleSubmit}
-            className="lg:flex flex-col mr-[30px] gap-[20px] items-center mt-[15px]"
+            className="flex flex-col gap-5 items-center"
           >
             <Input
               type="text"

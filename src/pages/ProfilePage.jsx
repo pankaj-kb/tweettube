@@ -40,60 +40,41 @@ function ProfilePage() {
   const allVideos = deepStats?.allVideos;
 
   return (
-    <div className="text-accentwhite flex flex-col p-8 gap-12">
-      <div className="flex pl-[20%]">
-        <div className="flex items-center gap-10 border-accentpink pr-8 border-r-2">
-          <OwnerTile
-            owner={user}
-            avatarClass={
-              "rounded-full border-[5px] border-accentpink h-[180px] w-[180px] object-contain"
-            }
-            infoDivClass={"flex flex-col items-start gap-2"}
-            fullNameClass={"font-semibold text-[30px]"}
-            usernameClass={"font-light text-[18px]"}
-            showButton={true}
-            buttonClass={
-              "p-2 w-[140px] rounded-md text-center text-[20px] font-semibold"
-            }
-          />
-        </div>
-        <div className="flex flex-col p-8 border-accentpink border-r-2 items-start">
-          <h1 className="font-semibold text-[25px]">
-            Likes: {stats?.totalLikes}
-          </h1>
-          <h1 className="font-semibold text-[25px]">
-            Comments: {deepStats?.totalComments}
-          </h1>
-          <h1 className="font-semibold text-[25px]">
-            Video Views: {deepStats?.videoViews}
-          </h1>
-        </div>
-        <div className="flex flex-col p-8 border-accentpink border-r-2 items-start">
-          <h1 className="font-semibold text-[25px]">
-            Subscribers: {deepStats?.totalSubscribers}
-          </h1>
-          <h1 className="font-semibold text-[25px]">
-            Subscribed to: {deepStats?.channelsSubscribedTo}
-          </h1>
-        </div>
+    <div className="text-accentwhite flex flex-col mt-[30%] max-h-screen w-screen items-center md:mt-[10%]">
+      <div className="flex items-center justify-center gap-8 border-accentpink my-8 px-2 absolute z-50 bg-accentblack">
+        <OwnerTile
+          owner={user}
+          avatarClass={
+            "rounded-full border-[5px] border-accentpink h-[80px] w-[80px] object-contain"
+          }
+          infoDivClass={"flex flex-col items-start"}
+          fullNameClass={"font-semibold text-[20px]"}
+          usernameClass={"font-light text-[15px]"}
+          showButton={true}
+          buttonClass={
+            "p-2 w-100 rounded-md text-center text-[15px] font-semibold"
+          }
+        />
       </div>
-      <div className="flex flex-wrap py-4 px-[10%] gap-12 items-start">
-        {allVideos && allVideos.length > 0 ? (
-          allVideos.map((video) => (
-            <VideoCard key={video._id} video={video} owner={user} />
-          ))
-        ) : (
-          <p>No Videos Available</p>
-        )}
-      </div>
-      <div className="flex flex-wrap py-4 px-[10%] gap-12 items-start">
-        {allTweets && allTweets.length > 0 ? (
-          allTweets.map((tweet) => (
-            <TweetCard key={tweet._id} tweet={tweet} owner={user} />
-          ))
-        ) : (
-          <p>No tweets available</p>
-        )}
+      <div className="flex flex-col gap-2 md:w-screen">
+        <div className="flex flex-wrap py-4 px-[10%] gap-12 items-start mt-[30%] md:mt-[10%] md:h-[80%]">
+          {allVideos && allVideos.length > 0 ? (
+            allVideos.map((video) => (
+              <VideoCard key={video._id} video={video} owner={user} />
+            ))
+          ) : (
+            <p>No Videos Available</p>
+          )}
+        </div>
+        <div className="flex flex-wrap py-4 px-[10%] gap-12 items-start">
+          {allTweets && allTweets.length > 0 ? (
+            allTweets.map((tweet) => (
+              <TweetCard key={tweet._id} tweet={tweet} owner={user} />
+            ))
+          ) : (
+            <p>No tweets available</p>
+          )}
+        </div>
       </div>
     </div>
   );

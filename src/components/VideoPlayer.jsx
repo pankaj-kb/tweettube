@@ -1,29 +1,24 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import ReactPlayer from "react-player";
+import { useEffect, useRef } from "react";
 
 function VideoPlayer({ video }) {
 
+  const videoRef = useRef()
+
+  useEffect(() => {
+    sendVideoView()
+    videoRef.current.play();
+  },[])
+
   const sendVideoView = async () => {
     try {
-      const response = await axios.post(`view/${video._id}`)
-      // console.log(response)
+      const response = await axios.post(`view/${video._id}`);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
-  return (
-    <ReactPlayer
-    playing={true}
-      controls={true}
-      onStart={sendVideoView}
-      url={video.videoFile}
-      light={video.thumbnail}
-      width="1080px"
-      height="600px"
-    />
-  );
+  return <video src={video.videoFile} ref={videoRef} controls className="w-[450px] h-[400px] md:w-screen"></video>;
 }
-
 export default VideoPlayer;
