@@ -37,7 +37,7 @@ function SubscriptionData() {
      h-screen w-screen items-start justify-center gap-[10%] md:flex-row md:flex-wrap md:gap-[10%] md:items-center md:justify-center">
       {channels.map((channel) => (
         <div
-          className="flex items-center justify-center gap-4 md:flex-col"
+          className="flex items-center justify-center gap-6 md:flex-col"
           key={channel._id}
         >
           <OwnerTile
