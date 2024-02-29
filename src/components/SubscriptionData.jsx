@@ -33,23 +33,26 @@ function SubscriptionData() {
   }, [subscriberId]);
 
   return channels.length ? (
-    <div className="flex flex-wrap gap-20 overflow-hidden p-20 text-accentwhite">
+    <div className="flex flex-col overflow-hidden text-accentwhite
+     h-screen w-screen items-start justify-center gap-[10%] md:flex-row md:flex-wrap md:gap-[10%] md:items-center md:justify-center">
       {channels.map((channel) => (
         <div
-          className="flex flex-col items-center justify-center gap-4"
+          className="flex items-center justify-center gap-4 md:flex-col"
           key={channel._id}
         >
           <OwnerTile
             owner={channel}
-            avatarClass={"object-contain w-[180px] h-[180px] rounded-full cursor-pointer"}
+            avatarClass={
+              "object-contain w-[80px] h-[80px] rounded-full cursor-pointer md:w-[180px] md:h-[180px]"
+            }
             infoDivClass={"flex flex-col"}
             fullNameClass={
-              "text-center font-semibold text-[25px] cursor-pointer"
+              "text-center font-semibold text-[20px] cursor-pointer"
             }
-            usernameClass={"text-center font-medium text-[15px] cursor-pointer"}
+            usernameClass={"text-center font-medium text-[13px] cursor-pointer"}
             showButton={true}
             buttonClass={
-              "text-center font-semibold rounded-lg h-auto text-[22px] p-2"
+              "text-center font-semibold rounded-lg h-auto text-[20px] p-2"
             }
           />
         </div>
