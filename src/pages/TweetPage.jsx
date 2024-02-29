@@ -41,27 +41,25 @@ function TweetPage() {
   return (
     <div
       className="text-accentwhite flex 
-    flex-col items-center
-    p-8 overflow-hidden rounded-lg"
+    flex-col items-center justify-center
+    p-8 overflow-hidden rounded-lg w-screen h-screen"
     >
       <div
-        className="flex gap-4 items-center cursor-pointer p-4 m-4 border-2 
-      rounded-xl border-accentpink shadow-accentpink shadow-md w-[20%]"
+        className="flex gap-2 items-center cursor-pointer p-2 border-2
+      rounded-xl border-accentpink shadow-accentpink shadow-md w-screen/2"
       >
         <OwnerTile
           owner={owner}
-          avatarClass={"h-[50px] rounded-full object-contain"}
+          avatarClass={"h-[20px] rounded-full object-contain"}
           infoDivClass={"flex flex-col"}
           fullNameClass={"text-[18px] font-semibold"}
           usernameClass={"text-[13px] font-light"}
           showButton={true}
-          buttonClass={
-            "p-2 ml-6 w-[110px] rounded-md font-semibold text-center ml-20"
-          }
+          buttonClass={"p-2 w-[px] rounded-md font-semibold text-center ml-20"}
         />
       </div>
-      <div className="flex flex-col items-start">
-        <h1 className="py-4 px-12 max-w-lg text-start font-medium leading-md text-[22px]">
+      <div className="flex flex-col items-start md:justify-center md:items-center">
+        <h1 className="py-4 px-12 max-w-screen text-start font-medium leading-md text-[22px] md:w-[30%]">
           {tweet.content}
         </h1>
         <span className="font-light text-[12px] px-12">{relativeTime}</span>
@@ -81,12 +79,12 @@ function TweetPage() {
         />
       </div>
       <div>
-        <div className="text-accentwhite flex gap-4 items-center">
+        <div className="text-accentwhite flex flex-col gap-2 items-center">
           <CommentForm
             postId={tweet._id}
             postType={"t"}
             inputClassName={
-              "p-1 bg-accentgray font-medium text-[18px] w-[400px] h-[130%] text-start focus:outline-none border-2 border-accentblack focus:border-accentpink hover:border-accentpink rounded-md"
+              "bg-accentgray font-medium text-[18px] w-[400px] h-[100s%] text-start focus:outline-none border-2 border-accentblack focus:border-accentpink hover:border-accentpink rounded-md"
             }
             buttonClasses={
               "bg-accentgray focus:bg-accentpink hover:bg-accentpink text-center rounded-md font-semibold h-[100%] p-1"
@@ -94,8 +92,8 @@ function TweetPage() {
           />
         </div>
         <div className="flex flex-col p-2">
-        {/* Todo: Implment auto refresh of comments after submitting a comment */}
-          <CommentsList postId={tweet._id} postType={"t"}/>
+          {/* Todo: Implment auto refresh of comments after submitting a comment */}
+          <CommentsList postId={tweet._id} postType={"t"} />
         </div>
       </div>
     </div>
