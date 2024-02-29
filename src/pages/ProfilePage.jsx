@@ -40,7 +40,7 @@ function ProfilePage() {
   const allVideos = deepStats?.allVideos;
 
   return (
-    <div className="text-accentwhite flex flex-col mt-[30%] max-h-screen w-screen items-center md:mt-[10%]">
+    <div className="text-accentwhite flex flex-col mt-[30%] h-screen w-screen items-center md:mt-[5%]">
       <div className="flex items-center justify-center gap-8 border-accentpink my-8 px-2 absolute z-50 bg-accentblack">
         <OwnerTile
           owner={user}
