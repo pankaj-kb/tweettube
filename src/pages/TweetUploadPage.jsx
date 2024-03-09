@@ -39,14 +39,14 @@ function TweetUploadPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-5 p-6">
+    <div className="flex flex-col w-screen h-screen justify-center items-center gap-4">
       <textarea
         type="text"
         name="tweetContent"
         placeholder="Start typing ....."
         value={formData.tweetContent}
         onChange={handleChange}
-        className="bg-accentgray text-accentwhite font-medium h-[500px] w-[600px] 
+        className="bg-accentgray text-accentwhite font-medium h-[400px] w-[80%] 
     rounded-md text-[20px] border-2 p-2
     border-accentpink focus:outline-none focus:shadow-2
     focus:shadow-accentpink text-start resize-none"
