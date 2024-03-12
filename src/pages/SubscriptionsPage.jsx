@@ -1,6 +1,9 @@
-import { Suspense } from "react";
-import SubscriptionData from "../components/SubscriptionData";
-import LoadingScreen from "./LoadingScreen";
+import { Suspense, lazy } from "react";
+import LoadingScreen from "./LoadingScreen.jsx";
+const SubscriptionData = lazy(() =>
+  import("../components/SubscriptionData.jsx")
+);
+
 function SubscriptionsPage() {
   return (
     <Suspense fallback={<LoadingScreen />}>

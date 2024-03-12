@@ -1,6 +1,6 @@
-import { Suspense } from "react";
-import LoadingScreen from "./LoadingScreen";
-import VideoGallary from "../components/VideoGallary";
+import { Suspense, lazy } from "react";
+import LoadingScreen from "./LoadingScreen.jsx";
+const VideoGallary = lazy(() => import("../components/VideoGallary.jsx"));
 
 function HomePage() {
   return (
