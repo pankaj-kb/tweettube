@@ -12,7 +12,8 @@ function SearchBar({
 
   const [query, setQuery] = useState("");
 
-  const search = () => {
+  const search = (e) => {
+    e.preventDefault();
     if (query) navigate(`/search/query=${query}`);
   };
 
@@ -22,16 +23,18 @@ function SearchBar({
 
   return (
     <>
-      <input
-        type="text"
-        name={name}
-        onChange={handleOnChange}
-        placeholder={placeholder}
-        className={inputClassName}
-      />
-      <button className={buttonClassName} onClick={search}>
-        {buttonText}
-      </button>
+      <form action="submit">
+        <input
+          type="text"
+          name={name}
+          onChange={handleOnChange}
+          placeholder={placeholder}
+          className={inputClassName}
+        />
+        <button className={buttonClassName} onClick={search} type="submit">
+          {buttonText}
+        </button>
+      </form>
     </>
   );
 }

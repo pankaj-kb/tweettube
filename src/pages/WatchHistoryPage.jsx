@@ -23,7 +23,7 @@ function WatchHistoryPage() {
   return (
     <>
       {videos.length > 0 ? (
-        <div className="flex flex-wrap p-8 gap-12 items-center justify-start">
+        <div className="flex flex-wrap gap-6 items-center justify-center h-screen w-screen mt-[50%] md:mt-0">
           {videos.map((video) => (
             <VideoCard
               key={video.video._id}

@@ -76,7 +76,7 @@ function VideoUploadPage() {
     <>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center justify-start p-6 gap-6"
+        className="flex flex-col w-screen h-screen justify-center items-center gap-2"
       >
         <Input
           type="text"
@@ -87,7 +87,7 @@ function VideoUploadPage() {
           className="bg-accentgray text-accentwhite font-medium 
     rounded-md text-[20px] border-2 p-2
     border-accentpink focus:outline-none focus:shadow-2
-    focus:shadow-accentpink text-start h-[50px] w-[500px]"
+    focus:shadow-accentpink text-start h-[50px] w-[80%]"
         />
         <textarea
           type="text"
@@ -98,7 +98,7 @@ function VideoUploadPage() {
           className="bg-accentgray text-accentwhite font-medium 
     rounded-md text-[20px] border-2 p-2
     border-accentpink focus:outline-none focus:shadow-2
-    focus:shadow-accentpink text-start resize-none h-[300px] w-[500px]"
+    focus:shadow-accentpink text-start resize-none h-[200px] w-[80%]"
         />
         <input
           type="file"
